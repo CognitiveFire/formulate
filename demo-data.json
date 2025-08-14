@@ -1,0 +1,86 @@
+{
+  "contentType": "AI Readiness Assessment",
+  "description": "A comprehensive analysis of your organization's readiness for AI implementation. Our AI-powered assessment will provide personalized insights and recommendations based on your industry, company size, and current technology stack.",
+  "questions": [
+    {
+      "id": "1",
+      "type": "email",
+      "question": "What is your business email address?",
+      "required": true
+    },
+    {
+      "id": "2",
+      "type": "text",
+      "question": "What is your name?",
+      "required": true
+    },
+    {
+      "id": "3",
+      "type": "text",
+      "question": "What is your company name?",
+      "required": true
+    },
+    {
+      "id": "4",
+      "type": "select",
+      "question": "What industry are you in?",
+      "required": true,
+      "options": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Manufacturing",
+        "Retail",
+        "Education",
+        "Other"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "select",
+      "question": "How many employees does your company have?",
+      "required": true,
+      "options": [
+        "1-10",
+        "11-50",
+        "51-200",
+        "201-1000",
+        "1000+"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "select",
+      "question": "What is your current AI adoption level?",
+      "required": true,
+      "options": [
+        "No AI implementation",
+        "Basic automation tools",
+        "Some AI features",
+        "Advanced AI systems",
+        "AI-first organization"
+      ]
+    },
+    {
+      "id": "7",
+      "type": "textarea",
+      "question": "What are your main goals for AI implementation?",
+      "required": false
+    },
+    {
+      "id": "8",
+      "type": "select",
+      "question": "What is your budget range for AI projects?",
+      "required": false,
+      "options": [
+        "Under $10K",
+        "$10K - $50K",
+        "$50K - $200K",
+        "$200K - $1M",
+        "$1M+"
+      ]
+    }
+  ],
+  "formName": "AI Readiness Assessment",
+  "formDescription": "Get a personalized analysis of your organization's AI readiness and receive actionable recommendations for implementation."
+}
