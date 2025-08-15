@@ -50,7 +50,7 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-gradient-to-b from-white to-secondary-50 shadow-2xl z-50 lg:hidden"
+              className="fixed right-0 top-0 h-full w-80 bg-secondary-100 shadow-2xl z-50 lg:hidden"
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-secondary-200 bg-white">
@@ -68,7 +68,7 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
               </div>
 
               {/* Navigation items */}
-              <nav className="p-6">
+              <nav className="p-6 bg-white rounded-lg mx-4 mb-20 shadow-lg border border-secondary-200">
                 <div className="mb-4">
                   <h3 className="text-sm font-semibold text-secondary-500 uppercase tracking-wider mb-3">
                     Navigation
