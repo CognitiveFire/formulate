@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Wand2, FormInput, Palette, Zap, Users, Download, Share2 } from 'lucide-react'
 import Link from 'next/link'
+import MobileNavigation from '@/components/MobileNavigation'
 
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false)
@@ -41,7 +42,7 @@ export default function HomePage() {
               <Wand2 className="w-8 h-8 text-primary-600" />
               <span className="text-xl font-bold text-secondary-900">Formulate</span>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               <Link href="/demo" className="text-secondary-600 hover:text-secondary-900 font-medium">
                 See Demo
               </Link>
@@ -52,6 +53,7 @@ export default function HomePage() {
                 Landing Page Builder
               </Link>
             </div>
+            <MobileNavigation />
           </div>
         </div>
       </nav>
@@ -64,11 +66,11 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-secondary-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary-900 mb-6">
               Turn Ideas Into
               <span className="text-primary-600 block">Lead-Generating Content</span>
             </h1>
-            <p className="text-xl text-secondary-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-secondary-600 mb-8 max-w-3xl mx-auto px-4">
               Just describe your content idea and Formulate builds the perfect form and landing page. 
               AI generates personalized content that converts visitors into qualified leads.
             </p>

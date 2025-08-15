@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Wand2, Palette, Settings, Eye, Download, Share2, Upload, Globe } from 'lucide-react'
 import Link from 'next/link'
 import LandingPageBuilder from '@/components/LandingPageBuilder'
+import MobileNavigation from '@/components/MobileNavigation'
 
 export default function BuilderPage() {
   const [formData, setFormData] = useState(null)
@@ -32,9 +33,12 @@ export default function BuilderPage() {
               <Wand2 className="w-8 h-8 text-primary-600" />
               <span className="text-xl font-bold text-secondary-900">Formulate</span>
             </Link>
-            <Link href="/wizard" className="btn-secondary">
-              Create New Form
-            </Link>
+            <div className="hidden lg:block">
+              <Link href="/wizard" className="btn-secondary">
+                Create New Form
+              </Link>
+            </div>
+            <MobileNavigation currentPage="/builder" />
           </div>
         </div>
       </nav>

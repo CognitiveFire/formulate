@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Wand2, ArrowRight, Check, Sparkles } from 'lucide-react'
 import Link from 'next/link'
+import MobileNavigation from '@/components/MobileNavigation'
 
 export default function DemoPage() {
   const [selectedType, setSelectedType] = useState('')
@@ -63,7 +64,7 @@ export default function DemoPage() {
               <Wand2 className="w-8 h-8 text-primary-600" />
               <span className="text-xl font-bold text-secondary-900">Formulate</span>
             </Link>
-            <div className="flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               <Link href="/wizard" className="btn-secondary">
                 Try It Now
               </Link>
@@ -71,6 +72,7 @@ export default function DemoPage() {
                 Landing Page Builder
               </Link>
             </div>
+            <MobileNavigation currentPage="/demo" />
           </div>
         </div>
       </nav>
@@ -88,11 +90,11 @@ export default function DemoPage() {
               <span>AI-Powered Question Generation</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-secondary-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary-900 mb-6">
               See How AI Generates
               <span className="text-primary-600 block">Perfect Form Questions</span>
             </h1>
-            <p className="text-xl text-secondary-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-secondary-600 mb-8 max-w-3xl mx-auto px-4">
               Watch Formulate's AI analyze your content type and description to automatically generate 
               the most relevant questions for your lead generation forms.
             </p>

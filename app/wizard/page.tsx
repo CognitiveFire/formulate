@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Wand2, FormInput, Palette, Zap, Check } from 'lucide-react'
 import Link from 'next/link'
 import FormWizard from '@/components/FormWizard'
+import MobileNavigation from '@/components/MobileNavigation'
 
 export default function WizardPage() {
   return (
@@ -17,9 +18,12 @@ export default function WizardPage() {
               <Wand2 className="w-8 h-8 text-primary-600" />
               <span className="text-xl font-bold text-secondary-900">Formulate</span>
             </Link>
-            <Link href="/builder" className="btn-secondary">
-              Landing Page Builder
-            </Link>
+            <div className="hidden lg:block">
+              <Link href="/builder" className="btn-secondary">
+                Landing Page Builder
+              </Link>
+            </div>
+            <MobileNavigation currentPage="/wizard" />
           </div>
         </div>
       </nav>
