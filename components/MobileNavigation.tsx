@@ -25,7 +25,7 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
       {/* Mobile menu button */}
       <button
         onClick={toggleMenu}
-        className="lg:hidden p-3 rounded-lg text-secondary-600 hover:text-secondary-900 hover:bg-secondary-100 transition-colors border border-secondary-200 hover:border-secondary-300"
+        className="lg:hidden p-3 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-700 transition-colors border border-charcoal-600 hover:border-charcoal-500"
         aria-label="Toggle mobile menu"
       >
         <Menu className="w-6 h-6" />
@@ -50,17 +50,17 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-secondary-100 shadow-2xl z-50 lg:hidden"
+              className="fixed right-0 top-0 h-full w-80 bg-charcoal-800 shadow-2xl z-50 lg:hidden"
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-secondary-200 bg-white">
+              <div className="flex items-center justify-between p-6 border-b border-charcoal-700 bg-charcoal-900">
                 <div className="flex items-center space-x-2">
-                  <Wand2 className="w-8 h-8 text-primary-600" />
-                  <span className="text-xl font-bold text-secondary-900">Formulate</span>
+                  <Wand2 className="w-8 h-8 text-n60-500" />
+                  <span className="text-xl font-bold text-white">Formulate</span>
                 </div>
                 <button
                   onClick={toggleMenu}
-                  className="p-2 rounded-lg text-secondary-600 hover:text-secondary-900 hover:bg-secondary-100 transition-colors"
+                  className="p-2 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-700 transition-colors"
                   aria-label="Close mobile menu"
                 >
                   <X className="w-6 h-6" />
@@ -68,9 +68,9 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
               </div>
 
               {/* Navigation items */}
-              <nav className="p-6 bg-white rounded-lg mx-4 mb-20 shadow-lg border border-secondary-200">
+              <nav className="p-6 bg-charcoal-800 rounded-lg mx-4 mb-20 shadow-lg border border-charcoal-700">
                 <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-secondary-500 uppercase tracking-wider mb-3">
+                  <h3 className="text-sm font-semibold text-charcoal-400 uppercase tracking-wider mb-3">
                     Navigation
                   </h3>
                 </div>
@@ -82,8 +82,8 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
                         onClick={toggleMenu}
                         className={`block w-full px-6 py-4 rounded-xl text-base font-semibold transition-all duration-200 border-2 ${
                           currentPage === item.href
-                            ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-600/25'
-                            : 'bg-white text-secondary-700 border-secondary-200 hover:bg-secondary-50 hover:border-primary-300 hover:text-primary-700 hover:shadow-md'
+                            ? 'bg-n60-600 text-white border-n60-600 shadow-lg shadow-n60-600/25'
+                            : 'bg-charcoal-700 text-white border-charcoal-600 hover:bg-charcoal-600 hover:border-n60-500 hover:text-n60-300 hover:shadow-md'
                         }`}
                       >
                         {item.label}
@@ -94,11 +94,11 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
               </nav>
 
               {/* Footer */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-secondary-200 bg-white">
+              <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-charcoal-700 bg-charcoal-900">
                 <Link
                   href="/"
                   onClick={toggleMenu}
-                  className="block text-center w-full px-6 py-4 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25"
+                  className="block text-center w-full px-6 py-4 bg-n60-600 text-white font-semibold rounded-xl hover:bg-n60-700 transition-colors shadow-lg shadow-n60-600/25"
                 >
                   Back to Home
                 </Link>

@@ -50,8 +50,8 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
     description: formData?.description || 'Get a comprehensive analysis of your organization\'s readiness for AI implementation. Our AI-powered assessment will provide personalized insights and recommendations.',
     ctaText: 'Get Your Free Assessment',
     logo: null,
-    primaryColor: '#0ea5e9',
-    backgroundColor: '#ffffff',
+    primaryColor: '#ef4444',
+    backgroundColor: '#0f172a',
     customUrl: '',
     showSocialProof: true,
     socialProofText: 'Join 10,000+ companies using our assessments'
@@ -142,7 +142,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
         {/* Left Panel - Customization */}
         <div className="space-y-6">
           {/* Tab Navigation */}
-          <div className="bg-white rounded-lg p-1 shadow-sm">
+          <div className="bg-charcoal-800 rounded-lg p-1 shadow-sm border border-charcoal-700">
             <div className="flex space-x-1 overflow-x-auto">
               {tabs.map((tab) => (
                 <button
@@ -150,8 +150,8 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                     activeTab === tab.id
-                      ? 'bg-primary-100 text-primary-700'
-                      : 'text-secondary-600 hover:text-secondary-900'
+                      ? 'bg-n60-600 text-white'
+                      : 'text-charcoal-300 hover:text-white'
                   }`}
                 >
                   {tab.icon}
@@ -165,27 +165,27 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
           <div className="card">
             {activeTab === 'design' && (
               <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-secondary-900">Design Customization</h3>
+                <h3 className="text-lg font-semibold text-white">Design Customization</h3>
                 
                 {/* Logo Upload */}
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label className="block text-sm font-medium text-charcoal-300 mb-2">
                     Company Logo
                   </label>
                   <div
                     {...getRootProps()}
-                    className="border-2 border-dashed border-secondary-300 rounded-lg p-6 text-center hover:border-primary-400 transition-colors cursor-pointer"
+                    className="border-2 border-dashed border-charcoal-600 rounded-lg p-6 text-center hover:border-n60-500 transition-colors cursor-pointer bg-charcoal-700"
                   >
                     <input {...getInputProps()} />
                     {logoPreview ? (
                       <div className="space-y-2">
                         <img src={logoPreview} alt="Logo" className="w-16 h-16 mx-auto object-contain" />
-                        <p className="text-sm text-secondary-600">Click to change logo</p>
+                        <p className="text-sm text-charcoal-400">Click to change logo</p>
                       </div>
                     ) : (
                       <div className="space-y-2">
-                        <Upload className="w-8 h-8 mx-auto text-secondary-400" />
-                        <p className="text-sm text-secondary-600">Drop your logo here or click to browse</p>
+                        <Upload className="w-8 h-8 mx-auto text-charcoal-500" />
+                        <p className="text-sm text-charcoal-400">Drop your logo here or click to browse</p>
                       </div>
                     )}
                   </div>
@@ -194,7 +194,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                 {/* Color Scheme */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       Primary Color
                     </label>
                     <div className="flex items-center space-x-2">
@@ -202,7 +202,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                         type="color"
                         value={config.primaryColor}
                         onChange={(e) => updateConfig('primaryColor', e.target.value)}
-                        className="w-10 h-10 rounded border border-secondary-300"
+                        className="w-10 h-10 rounded border border-charcoal-600"
                       />
                       <input
                         type="text"
@@ -214,7 +214,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       Background Color
                     </label>
                     <div className="flex items-center space-x-2">
@@ -222,7 +222,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                         type="color"
                         value={config.backgroundColor}
                         onChange={(e) => updateConfig('backgroundColor', e.target.value)}
-                        className="w-10 h-10 rounded border border-secondary-300"
+                        className="w-10 h-10 rounded border border-charcoal-600"
                       />
                       <input
                         type="text"
@@ -241,9 +241,9 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                       type="checkbox"
                       checked={config.showSocialProof}
                       onChange={(e) => updateConfig('showSocialProof', e.target.checked)}
-                      className="rounded border-secondary-300 text-primary-600 focus:ring-primary-500"
+                      className="rounded border-charcoal-600 text-n60-500 focus:ring-n60-500 bg-charcoal-800"
                     />
-                    <span className="text-sm font-medium text-secondary-700">Show social proof</span>
+                    <span className="text-sm font-medium text-charcoal-300">Show social proof</span>
                   </label>
                   {config.showSocialProof && (
                     <input
@@ -260,11 +260,11 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
             {activeTab === 'content' && (
               <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-secondary-900">Content & Copy</h3>
+                <h3 className="text-lg font-semibold text-white">Content & Copy</h3>
                 
                 {/* Title */}
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label className="block text-sm font-medium text-charcoal-300 mb-2">
                     Page Title
                   </label>
                   <input
@@ -278,7 +278,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
                 {/* Subtitle */}
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label className="block text-sm font-medium text-charcoal-300 mb-2">
                     Subtitle
                   </label>
                   <input
@@ -292,7 +292,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
                 {/* Description */}
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label className="block text-sm font-medium text-charcoal-300 mb-2">
                     Description
                   </label>
                   <textarea
@@ -306,7 +306,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
                 {/* CTA Text */}
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label className="block text-sm font-medium text-charcoal-300 mb-2">
                     Call-to-Action Button Text
                   </label>
                   <input
@@ -320,11 +320,11 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
                 {/* Custom URL */}
                 <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  <label className="block text-sm font-medium text-charcoal-300 mb-2">
                     Custom URL Slug
                   </label>
                   <div className="flex items-center space-x-2">
-                    <span className="text-secondary-500">formulate.app/</span>
+                    <span className="text-charcoal-500">formulate.app/</span>
                     <input
                       type="text"
                       value={config.customUrl}
@@ -336,7 +336,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                 </div>
 
                 {/* AI Enhancement */}
-                <div className="pt-4 border-t border-secondary-200">
+                <div className="pt-4 border-t border-charcoal-600">
                   <button
                     onClick={generateLandingPage}
                     className="w-full btn-primary flex items-center justify-center space-x-2"
@@ -350,14 +350,14 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
             {activeTab === 'ai-content' && (
               <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-secondary-900">AI-Generated Content</h3>
+                <h3 className="text-lg font-semibold text-white">AI-Generated Content</h3>
                 
-                <div className="p-4 bg-primary-50 border border-primary-200 rounded-lg">
+                <div className="p-4 bg-n60-900 border border-n60-700 rounded-lg">
                   <div className="flex items-center space-x-2 mb-3">
-                    <Sparkles className="w-5 h-5 text-primary-600" />
-                    <span className="text-sm font-medium text-primary-700">AI Content Ready</span>
+                    <Sparkles className="w-5 h-5 text-n60-400" />
+                    <span className="text-sm font-medium text-n60-300">AI Content Ready</span>
                   </div>
-                  <p className="text-sm text-primary-600 mb-4">
+                  <p className="text-sm text-n60-200 mb-4">
                     Based on your form responses, AI has generated personalized content including insights, recommendations, and next steps.
                   </p>
                   <button
@@ -369,32 +369,32 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-3 p-3 bg-secondary-50 rounded-lg">
-                    <FileText className="w-5 h-5 text-secondary-600" />
+                  <div className="flex items-center space-x-3 p-3 bg-charcoal-700 rounded-lg">
+                    <FileText className="w-5 h-5 text-charcoal-400" />
                     <div>
-                      <h4 className="font-medium text-secondary-900">Content Summary</h4>
-                      <p className="text-sm text-secondary-600">AI-generated insights and analysis</p>
+                      <h4 className="font-medium text-white">Content Summary</h4>
+                      <p className="text-sm text-charcoal-400">AI-generated insights and analysis</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-3 p-3 bg-secondary-50 rounded-lg">
-                    <BarChart3 className="w-5 h-5 text-secondary-600" />
+                  <div className="flex items-center space-x-3 p-3 bg-charcoal-700 rounded-lg">
+                    <BarChart3 className="w-5 h-5 text-charcoal-400" />
                     <div>
-                      <h4 className="font-medium text-secondary-900">Key Insights</h4>
-                      <p className="text-sm text-secondary-600">Data-driven findings and observations</p>
+                      <h4 className="font-medium text-white">Key Insights</h4>
+                      <p className="text-sm text-charcoal-400">Data-driven findings and observations</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-3 p-3 bg-secondary-50 rounded-lg">
-                    <Target className="w-5 h-5 text-secondary-600" />
+                  <div className="flex items-center space-x-3 p-3 bg-charcoal-700 rounded-lg">
+                    <Target className="w-5 h-5 text-charcoal-400" />
                     <div>
-                      <h4 className="font-medium text-secondary-900">Recommendations</h4>
-                      <p className="text-sm text-secondary-600">Actionable next steps and advice</p>
+                      <h4 className="font-medium text-white">Recommendations</h4>
+                      <p className="text-sm text-charcoal-400">Actionable next steps and advice</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-secondary-200">
+                <div className="pt-4 border-t border-charcoal-600">
                   <button className="w-full btn-secondary flex items-center justify-center space-x-2">
                     <Zap className="w-4 h-4" />
                     <span>Regenerate with AI</span>
@@ -405,7 +405,7 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
             {activeTab === 'preview' && (
               <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-secondary-900">Preview & Actions</h3>
+                <h3 className="text-lg font-semibold text-white">Preview & Actions</h3>
                 
                 <div className="space-y-4">
                   <button 
@@ -443,11 +443,11 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                   </button>
                 </div>
 
-                <div className="p-4 bg-secondary-50 rounded-lg">
-                  <h4 className="font-medium text-secondary-900 mb-2">Your Landing Page URL</h4>
+                <div className="p-4 bg-charcoal-700 rounded-lg">
+                  <h4 className="font-medium text-white mb-2">Your Landing Page URL</h4>
                   <div className="flex items-center space-x-2">
-                    <Globe className="w-4 h-4 text-secondary-400" />
-                    <span className="text-sm text-secondary-600">
+                    <Globe className="w-4 h-4 text-charcoal-400" />
+                    <span className="text-sm text-charcoal-300">
                       {config.customUrl 
                         ? `formulate.app/${config.customUrl}` 
                         : 'formulate.app/ai-readiness-assessment'
@@ -463,11 +463,11 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
         {/* Right Panel - Preview */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-secondary-900">
+            <h3 className="text-lg font-semibold text-white">
               {showLandingPagePreview ? 'Landing Page Preview' : 
                showAIContentPreview ? 'AI Content Preview' : 'Form Preview'}
             </h3>
-            <div className="flex items-center space-x-2 text-sm text-secondary-600">
+            <div className="flex items-center space-x-2 text-sm text-charcoal-400">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
               <span>Live Preview</span>
             </div>
@@ -496,15 +496,15 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                 >
                   {config.title}
                 </h1>
-                <p className="text-lg text-secondary-600 mb-2">
+                <p className="text-lg text-charcoal-300 mb-2">
                   {config.subtitle}
                 </p>
-                <p className="text-secondary-600 mb-6">
+                <p className="text-charcoal-300 mb-6">
                   {config.description}
                 </p>
                 
                 {config.showSocialProof && (
-                  <p className="text-sm text-secondary-500 mb-6">
+                  <p className="text-sm text-charcoal-500 mb-6">
                     {config.socialProofText}
                   </p>
                 )}
@@ -514,9 +514,9 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
               <div className="space-y-4">
                 {formData?.questions.map((question, index) => (
                   <div key={question.id}>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       {question.question}
-                      {question.required && <span className="text-red-500 ml-1">*</span>}
+                      {question.required && <span className="text-red-400 ml-1">*</span>}
                     </label>
                     
                     {question.type === 'text' && (
@@ -585,32 +585,32 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
               className="card max-h-[600px] overflow-y-auto"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-primary-600" />
+                <div className="w-10 h-10 bg-n60-900 rounded-full flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-n60-400" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-secondary-900">{aiContent.title}</h2>
-                  <p className="text-sm text-secondary-500">Generated on {aiContent.generatedAt}</p>
+                  <h2 className="text-xl font-bold text-white">{aiContent.title}</h2>
+                  <p className="text-sm text-charcoal-400">Generated on {aiContent.generatedAt}</p>
                 </div>
               </div>
 
               {/* Summary */}
-              <div className="mb-6 p-4 bg-secondary-50 rounded-lg">
-                <h3 className="font-semibold text-secondary-900 mb-2">Executive Summary</h3>
-                <p className="text-secondary-700">{aiContent.summary}</p>
+              <div className="mb-6 p-4 bg-charcoal-700 rounded-lg">
+                <h3 className="font-semibold text-white mb-2">Executive Summary</h3>
+                <p className="text-charcoal-300">{aiContent.summary}</p>
               </div>
 
               {/* Key Insights */}
               <div className="mb-6">
-                <h3 className="font-semibold text-secondary-900 mb-3 flex items-center space-x-2">
-                  <BarChart3 className="w-5 h-5 text-primary-600" />
+                <h3 className="font-semibold text-white mb-3 flex items-center space-x-2">
+                  <BarChart3 className="w-5 h-5 text-n60-400" />
                   <span>Key Insights</span>
                 </h3>
                 <div className="space-y-2">
                   {aiContent.keyInsights.map((insight, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-secondary-700 text-sm">{insight}</p>
+                      <div className="w-2 h-2 bg-n60-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-charcoal-300 text-sm">{insight}</p>
                     </div>
                   ))}
                 </div>
@@ -618,15 +618,15 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
               {/* Recommendations */}
               <div className="mb-6">
-                <h3 className="font-semibold text-secondary-900 mb-3 flex items-center space-x-2">
-                  <Target className="w-5 h-5 text-primary-600" />
+                <h3 className="font-semibold text-white mb-3 flex items-center space-x-2">
+                  <Target className="w-5 h-5 text-n60-400" />
                   <span>Recommendations</span>
                 </h3>
                 <div className="space-y-2">
                   {aiContent.recommendations.map((rec, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-secondary-700 text-sm">{rec}</p>
+                      <div className="w-2 h-2 bg-n60-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-charcoal-300 text-sm">{rec}</p>
                     </div>
                   ))}
                 </div>
@@ -634,23 +634,23 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
 
               {/* Next Steps */}
               <div className="mb-6">
-                <h3 className="font-semibold text-secondary-900 mb-3 flex items-center space-x-2">
-                  <TrendingUp className="w-5 h-5 text-primary-600" />
+                <h3 className="font-semibold text-white mb-3 flex items-center space-x-2">
+                  <TrendingUp className="w-5 h-5 text-n60-400" />
                   <span>Next Steps</span>
                 </h3>
                 <div className="space-y-2">
                   {aiContent.nextSteps.map((step, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <p className="text-secondary-700 text-sm">{step}</p>
+                      <div className="w-2 h-2 bg-n60-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-charcoal-300 text-sm">{step}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* AI Status */}
-              <div className="p-3 bg-primary-50 border border-primary-200 rounded-lg">
-                <div className="flex items-center space-x-2 text-sm text-primary-700">
+              <div className="p-3 bg-n60-900 border border-n60-700 rounded-lg">
+                <div className="flex items-center space-x-2 text-sm text-n60-300">
                   <Sparkles className="w-4 h-4" />
                   <span>Content generated by AI • Ready for customization</span>
                 </div>
@@ -676,15 +676,15 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
                 >
                   {config.title}
                 </h1>
-                <p className="text-lg text-secondary-600 mb-2">
+                <p className="text-lg text-charcoal-300 mb-2">
                   {config.subtitle}
                 </p>
-                <p className="text-secondary-600 mb-6">
+                <p className="text-charcoal-300 mb-6">
                   {config.description}
                 </p>
                 
                 {config.showSocialProof && (
-                  <p className="text-sm text-secondary-500 mb-6">
+                  <p className="text-sm text-charcoal-500 mb-6">
                     {config.socialProofText}
                   </p>
                 )}
@@ -694,9 +694,9 @@ export default function LandingPageBuilder({ formData }: { formData: FormData | 
               <div className="space-y-4">
                 {formData?.questions.map((question, index) => (
                   <div key={question.id}>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       {question.question}
-                      {question.required && <span className="text-red-500 ml-1">*</span>}
+                      {question.required && <span className="text-red-400 ml-1">*</span>}
                     </label>
                     
                     {question.type === 'text' && (

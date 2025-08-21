@@ -24,14 +24,14 @@ export default function BuilderPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-secondary-50 to-primary-50">
+    <div className="min-h-screen bg-charcoal-900">
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-secondary-200">
+      <nav className="bg-charcoal-800/90 backdrop-blur-md border-b border-charcoal-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <Wand2 className="w-8 h-8 text-primary-600" />
-              <span className="text-xl font-bold text-secondary-900">Formulate</span>
+              <Wand2 className="w-8 h-8 text-n60-500" />
+              <span className="text-xl font-bold text-white">Formulate</span>
             </Link>
             <div className="hidden lg:block">
               <Link href="/wizard" className="btn-secondary">
@@ -47,10 +47,10 @@ export default function BuilderPage() {
       <div className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-secondary-900 mb-4">
+            <h1 className="text-3xl font-bold text-white mb-4">
               Landing Page Builder
             </h1>
-            <p className="text-secondary-600">
+            <p className="text-charcoal-300">
               Customize your landing page design and preview how it will look to your visitors
             </p>
           </div>

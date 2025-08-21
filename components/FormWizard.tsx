@@ -46,7 +46,7 @@ export default function FormWizard() {
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<FormData>({
     defaultValues: {
       questions: [
-        { id: '1', type: 'email', question: 'What is your email address?', required: true },
+        { id: '1', type: 'email', question: 'What is your business email address?', required: true },
         { id: '2', type: 'text', question: 'What is your name?', required: true }
       ]
     }
@@ -117,8 +117,8 @@ export default function FormWizard() {
           <div key={step.number} className="flex items-center">
             <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
               currentStep >= step.number 
-                ? 'bg-primary-600 border-primary-600 text-white' 
-                : 'border-secondary-300 text-secondary-400'
+                ? 'bg-n60-600 border-n60-600 text-white' 
+                : 'border-charcoal-600 text-charcoal-400'
             }`}>
               {currentStep > step.number ? (
                 <Check className="w-5 h-5" />
@@ -127,13 +127,13 @@ export default function FormWizard() {
               )}
             </div>
             <span className={`ml-2 text-sm font-medium ${
-              currentStep >= step.number ? 'text-secondary-900' : 'text-secondary-400'
+              currentStep >= step.number ? 'text-white' : 'text-charcoal-400'
             }`}>
               {step.title}
             </span>
             {index < steps.length - 1 && (
               <div className={`w-16 h-0.5 mx-4 ${
-                currentStep > step.number ? 'bg-primary-600' : 'bg-secondary-300'
+                currentStep > step.number ? 'bg-n60-600' : 'bg-charcoal-600'
               }`} />
             )}
           </div>
@@ -154,12 +154,12 @@ export default function FormWizard() {
             {/* Step 1: Content Type */}
             {currentStep === 1 && (
               <div>
-                <h2 className="text-2xl font-bold text-secondary-900 mb-6">
+                <h2 className="text-2xl font-bold text-white mb-6">
                   What type of content do you want to create?
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       Content Type
                     </label>
                     <select
@@ -172,12 +172,12 @@ export default function FormWizard() {
                       ))}
                     </select>
                     {errors.contentType && (
-                      <p className="text-red-500 text-sm mt-1">{errors.contentType.message}</p>
+                      <p className="text-red-400 text-sm mt-1">{errors.contentType.message}</p>
                     )}
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       Describe your content idea
                     </label>
                     <textarea
@@ -190,22 +190,22 @@ export default function FormWizard() {
                       className="input-field"
                     />
                     {errors.description && (
-                      <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>
+                      <p className="text-red-400 text-sm mt-1">{errors.description.message}</p>
                     )}
                   </div>
 
                   {/* AI Question Generation */}
-                  <div className="pt-4 border-t border-secondary-200">
+                  <div className="pt-4 border-t border-charcoal-600">
                     <div className="text-center">
                       {/* AI Status Indicator */}
                       <div className="flex items-center justify-center space-x-2 mb-4">
                         <div className={`w-2 h-2 rounded-full ${aiService.isReady() ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
-                        <span className="text-xs text-secondary-600">
+                        <span className="text-xs text-charcoal-400">
                           {aiService.isReady() ? 'AI Powered by OpenAI' : 'AI Simulation Mode'}
                         </span>
                       </div>
                       
-                      <p className="text-sm text-secondary-600 mb-4">
+                      <p className="text-sm text-charcoal-400 mb-4">
                         Let AI generate the perfect questions for your content
                       </p>
                       <button
@@ -232,13 +232,13 @@ export default function FormWizard() {
                           </>
                         )}
                       </button>
-                      <p className="text-xs text-secondary-500 mt-2">
+                      <p className="text-xs text-charcoal-500 mt-2">
                         AI will analyze your content type and description to create relevant questions
                       </p>
                       
                       {/* Show regenerate option if questions already exist */}
                       {watchedQuestions.length > 2 && (
-                        <div className="mt-3 pt-3 border-t border-secondary-200">
+                        <div className="mt-3 pt-3 border-t border-charcoal-600">
                           <button
                             type="button"
                             onClick={() => {
@@ -249,7 +249,7 @@ export default function FormWizard() {
                               }
                             }}
                             disabled={isGenerating}
-                            className="text-sm text-primary-600 hover:text-primary-700 underline disabled:opacity-50"
+                            className="text-sm text-n60-400 hover:text-n60-300 underline disabled:opacity-50"
                           >
                             Regenerate questions with AI
                           </button>
@@ -265,27 +265,27 @@ export default function FormWizard() {
             {currentStep === 2 && (
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-secondary-900">
+                  <h2 className="text-2xl font-bold text-white">
                     Customize your form questions
                   </h2>
                   {watchedQuestions.length > 2 && (
-                    <div className="flex items-center space-x-2 text-sm text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
+                    <div className="flex items-center space-x-2 text-sm text-n60-400 bg-n60-900 px-3 py-1 rounded-full">
                       <Wand2 className="w-4 h-4" />
                       <span>AI-Generated Questions</span>
                     </div>
                   )}
                 </div>
                 
-                <div className="mb-6 p-4 bg-secondary-50 rounded-lg border border-secondary-200">
+                <div className="mb-6 p-4 bg-n60-900 rounded-lg border border-n60-700">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Wand2 className="w-4 h-4 text-primary-600" />
+                    <div className="w-8 h-8 bg-n60-800 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Wand2 className="w-4 h-4 text-n60-400" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-medium text-secondary-900 mb-1">
+                      <h3 className="font-medium text-white mb-1">
                         AI-Powered Question Generation
                       </h3>
-                      <p className="text-sm text-secondary-600">
+                      <p className="text-sm text-charcoal-300">
                         These questions were intelligently generated based on your content type and description. 
                         You can edit, reorder, or add new questions to perfectly match your needs.
                       </p>
@@ -295,14 +295,14 @@ export default function FormWizard() {
 
                 <div className="space-y-6">
                   {watchedQuestions.map((question, index) => (
-                    <div key={question.id} className="p-4 border border-secondary-200 rounded-lg hover:border-primary-300 transition-colors">
+                    <div key={question.id} className="p-4 border border-charcoal-600 rounded-lg hover:border-n60-500 transition-colors">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center space-x-2">
-                          <h3 className="text-lg font-medium text-secondary-900">
+                          <h3 className="text-lg font-medium text-white">
                             Question {index + 1}
                           </h3>
                           {question.required && (
-                            <span className="px-2 py-1 text-xs font-medium bg-red-100 text-red-700 rounded-full">
+                            <span className="px-2 py-1 text-xs font-medium bg-red-900 text-red-300 rounded-full">
                               Required
                             </span>
                           )}
@@ -311,7 +311,7 @@ export default function FormWizard() {
                           <button
                             type="button"
                             onClick={() => removeQuestion(index)}
-                            className="text-red-500 hover:text-red-700 p-1 rounded hover:bg-red-50"
+                            className="text-red-400 hover:text-red-300 p-1 rounded hover:bg-red-900/20"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -320,7 +320,7 @@ export default function FormWizard() {
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
-                          <label className="block text-sm font-medium text-secondary-700 mb-2">
+                          <label className="block text-sm font-medium text-charcoal-300 mb-2">
                             Question Type
                           </label>
                           <select
@@ -342,15 +342,15 @@ export default function FormWizard() {
                               type="checkbox"
                               checked={question.required}
                               onChange={(e) => updateQuestion(index, 'required', e.target.checked)}
-                              className="rounded border-secondary-300 text-primary-600 focus:ring-primary-500"
+                              className="rounded border-charcoal-600 text-n60-500 focus:ring-n60-500 bg-charcoal-800"
                             />
-                            <span className="ml-2 text-sm text-secondary-700">Required</span>
+                            <span className="ml-2 text-sm text-charcoal-300">Required</span>
                           </label>
                         </div>
                       </div>
                       
                       <div>
-                        <label className="block text-sm font-medium text-secondary-700 mb-2">
+                        <label className="block text-sm font-medium text-charcoal-300 mb-2">
                           Question Text
                         </label>
                         <input
@@ -364,7 +364,7 @@ export default function FormWizard() {
                       
                       {question.type === 'select' && (
                         <div className="mt-4">
-                          <label className="block text-sm font-medium text-secondary-700 mb-2">
+                          <label className="block text-sm font-medium text-charcoal-300 mb-2">
                             Options (one per line)
                           </label>
                           <textarea
@@ -382,7 +382,7 @@ export default function FormWizard() {
                   <button
                     type="button"
                     onClick={addQuestion}
-                    className="w-full py-3 border-2 border-dashed border-secondary-300 rounded-lg text-secondary-600 hover:border-primary-400 hover:text-primary-600 transition-colors duration-200"
+                    className="w-full py-3 border-2 border-dashed border-charcoal-600 rounded-lg text-charcoal-400 hover:border-n60-500 hover:text-n60-400 transition-colors duration-200"
                   >
                     <Plus className="w-5 h-5 mx-auto mb-2" />
                     Add Another Question
@@ -394,12 +394,12 @@ export default function FormWizard() {
             {/* Step 3: Form Details */}
             {currentStep === 3 && (
               <div>
-                <h2 className="text-2xl font-bold text-secondary-900 mb-6">
+                <h2 className="text-2xl font-bold text-white mb-6">
                   Customize your form appearance
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       Form Name
                     </label>
                     <input
@@ -408,12 +408,12 @@ export default function FormWizard() {
                       className="input-field"
                     />
                     {errors.formName && (
-                      <p className="text-red-500 text-sm mt-1">{errors.formName.message}</p>
+                      <p className="text-red-400 text-sm mt-1">{errors.formName.message}</p>
                     )}
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-charcoal-300 mb-2">
                       Form Description
                     </label>
                     <textarea
@@ -423,7 +423,7 @@ export default function FormWizard() {
                       className="input-field"
                     />
                     {errors.formDescription && (
-                      <p className="text-red-500 text-sm mt-1">{errors.formDescription.message}</p>
+                      <p className="text-red-400 text-sm mt-1">{errors.formDescription.message}</p>
                     )}
                   </div>
                 </div>
@@ -433,13 +433,13 @@ export default function FormWizard() {
             {/* Step 4: Generate */}
             {currentStep === 4 && (
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Zap className="w-8 h-8 text-primary-600" />
+                <div className="w-16 h-16 bg-n60-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Zap className="w-8 h-8 text-n60-400" />
                 </div>
-                <h2 className="text-2xl font-bold text-secondary-900 mb-4">
+                <h2 className="text-2xl font-bold text-white mb-4">
                   Ready to generate your form?
                 </h2>
-                <p className="text-secondary-600 mb-8">
+                <p className="text-charcoal-300 mb-8">
                   Formulate will create a custom form and landing page based on your specifications. 
                   You can then customize the design and styling to match your brand.
                 </p>
@@ -464,7 +464,7 @@ export default function FormWizard() {
         </AnimatePresence>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between mt-8 pt-6 border-t border-secondary-200">
+        <div className="flex justify-between mt-8 pt-6 border-t border-charcoal-600">
           <button
             onClick={() => {
               // If we're on step 3 and questions were AI-generated, go back to step 1
