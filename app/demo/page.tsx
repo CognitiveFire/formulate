@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Wand2, ArrowRight, Check, Sparkles } from 'lucide-react'
+import { Wand2, ArrowRight, Check, Sparkles, Eye, BarChart3, Target, TrendingUp, FileText, Users, Globe } from 'lucide-react'
 import Link from 'next/link'
 import MobileNavigation from '@/components/MobileNavigation'
 
@@ -10,6 +10,7 @@ export default function DemoPage() {
   const [selectedType, setSelectedType] = useState('')
   const [description, setDescription] = useState('')
   const [showExample, setShowExample] = useState(false)
+  const [showAIPreview, setShowAIPreview] = useState(false)
 
   const contentTypes = [
     'Readiness Report',
@@ -52,6 +53,72 @@ export default function DemoPage() {
       'What specific features are most important to you?',
       'What is your decision timeline?'
     ]
+  }
+
+  // Mock AI-generated content for demo
+  const aiGeneratedContent = {
+    'Readiness Report': {
+      title: 'AI Readiness Assessment Report',
+      summary: 'Based on your responses, your organization shows moderate readiness for AI implementation with strong potential in process automation and data analytics.',
+      keyInsights: [
+        'Your team has basic automation experience but lacks advanced AI skills',
+        'Data infrastructure is partially ready but needs consolidation',
+        'Leadership shows strong support for digital transformation',
+        'Budget allocation is appropriate for your company size'
+      ],
+      recommendations: [
+        'Invest in AI skills training for key team members',
+        'Implement data governance framework before AI deployment',
+        'Start with pilot projects in customer service automation',
+        'Establish AI ethics and compliance guidelines'
+      ],
+      nextSteps: [
+        'Schedule AI readiness workshop with leadership team',
+        'Conduct skills gap analysis for technical staff',
+        'Evaluate potential AI vendors and partners',
+        'Develop 90-day AI implementation roadmap'
+      ]
+    },
+    'Product Comparison': {
+      title: 'Marketing Automation Tools Comparison',
+      summary: 'Based on your requirements, we\'ve analyzed the top marketing automation platforms to find the best fit for your business needs and budget.',
+      keyInsights: [
+        'HubSpot leads in ease of use and customer support',
+        'Marketo excels in enterprise features and scalability',
+        'Pardot integrates well with Salesforce ecosystems',
+        'ActiveCampaign offers the best value for small businesses'
+      ],
+      recommendations: [
+        'Consider HubSpot if you prioritize user experience',
+        'Choose Marketo for enterprise-level requirements',
+        'Go with Pardot if you\'re heavily invested in Salesforce',
+        'Select ActiveCampaign for cost-effective solutions'
+      ],
+      nextSteps: [
+        'Schedule demos with top 3 recommended platforms',
+        'Request pricing quotes and implementation timelines',
+        'Evaluate integration requirements with existing tools',
+        'Plan pilot program with selected vendor'
+      ]
+    }
+  }
+
+  const getDemoData = () => {
+    if (!selectedType) return null
+    
+    return {
+      contentType: selectedType,
+      description: description || examples[selectedType as keyof typeof examples],
+      questions: aiQuestions[selectedType as keyof typeof aiQuestions]?.map((q, i) => ({
+        id: (i + 1).toString(),
+        type: i === 0 ? 'email' : i === 1 ? 'text' : 'select',
+        question: q,
+        required: i < 3,
+        options: i >= 3 ? ['Option 1', 'Option 2', 'Option 3'] : undefined
+      })) || [],
+      formName: `${selectedType} Form`,
+      formDescription: `Get your personalized ${selectedType.toLowerCase()} and actionable insights.`
+    }
   }
 
   return (
@@ -171,9 +238,27 @@ export default function DemoPage() {
                   <p className="text-primary-700 mb-4">
                     Based on your content type and description, AI has generated the perfect questions to collect the right information from your leads.
                   </p>
-                  <Link href="/wizard" className="btn-primary w-full">
-                    Create Your Form Now
-                  </Link>
+                  <div className="space-y-3">
+                    <Link href="/wizard" className="btn-primary w-full">
+                      Create Your Form Now
+                    </Link>
+                    <button
+                      onClick={() => setShowAIPreview(true)}
+                      className="w-full btn-secondary"
+                    >
+                      <Eye className="w-4 h-4 mr-2 inline" />
+                      Preview AI Content
+                    </button>
+                    {getDemoData() && (
+                      <Link 
+                        href={`/builder?formData=${encodeURIComponent(JSON.stringify(getDemoData()))}`}
+                        className="w-full btn-secondary border-primary-200 text-primary-700 hover:bg-primary-50"
+                      >
+                        <Globe className="w-4 h-4 mr-2 inline" />
+                        View Landing Page Preview
+                      </Link>
+                    )}
+                  </div>
                 </motion.div>
               )}
             </div>
@@ -225,6 +310,47 @@ export default function DemoPage() {
                     </p>
                   </div>
                 </div>
+              )}
+
+              {/* AI Content Preview */}
+              {showAIPreview && selectedType && aiGeneratedContent[selectedType as keyof typeof aiGeneratedContent] && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="card bg-gradient-to-r from-primary-50 to-secondary-50 border-primary-200"
+                >
+                  <div className="flex items-center space-x-3 mb-4">
+                    <Sparkles className="w-5 h-5 text-primary-600" />
+                    <h4 className="font-semibold text-primary-900">AI-Generated Content Preview</h4>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h5 className="font-medium text-secondary-900 mb-2">Summary</h5>
+                      <p className="text-sm text-secondary-700">
+                        {aiGeneratedContent[selectedType as keyof typeof aiGeneratedContent].summary}
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium text-secondary-900 mb-2">Key Insights</h5>
+                      <ul className="space-y-1">
+                        {aiGeneratedContent[selectedType as keyof typeof aiGeneratedContent].keyInsights.slice(0, 2).map((insight, index) => (
+                          <li key={index} className="text-sm text-secondary-700 flex items-start space-x-2">
+                            <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span>{insight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="pt-3 border-t border-primary-200">
+                      <p className="text-xs text-primary-600 text-center">
+                        This is just a preview. The full AI-generated content will be available after form submission.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
               )}
 
               {/* How It Works */}
