@@ -471,7 +471,7 @@ What would you like to explore further?`
             />
           </div>
           <button
-            onClick={handleSendMessage}
+            onClick={() => handleSendMessage()}
             disabled={!inputValue.trim() || isTyping}
             className="px-4 py-3 bg-n60-600 text-white rounded-xl hover:bg-n60-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
           >
