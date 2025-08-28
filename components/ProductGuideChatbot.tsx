@@ -373,7 +373,7 @@ What would you like to explore further?`
   return (
     <div className="bg-white rounded-2xl shadow-2xl border border-charcoal-200 h-full flex flex-col">
       {/* Chatbot Header */}
-      <div className="bg-gradient-to-r from-n60-600 to-n60-700 text-white px-6 py-4 rounded-t-2xl">
+      <div className="bg-gradient-to-r from-n60-800 to-n60-700 text-white px-6 py-4 rounded-t-2xl">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
             <img 
@@ -400,7 +400,7 @@ What would you like to explore further?`
       <div className="p-4 bg-charcoal-50 border-b border-charcoal-200">
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm font-medium text-charcoal-700">{t.quickQuestions}</p>
-          <button className="px-3 py-1 bg-n60-600 text-white text-xs rounded-full hover:bg-n60-700 transition-colors flex items-center space-x-1">
+          <button className="px-3 py-1 bg-n60-800 text-white text-xs rounded-full hover:bg-n60-700 transition-colors flex items-center space-x-1">
             <User className="w-3 h-3" />
             <span>Salgsperson</span>
           </button>
@@ -410,7 +410,7 @@ What would you like to explore further?`
             <button
               key={index}
               onClick={() => handleQuickQuestion(question)}
-              className="px-3 py-1 bg-white text-charcoal-600 text-xs rounded-full border border-charcoal-200 hover:border-n60-500 hover:text-n60-600 transition-colors"
+              className="px-3 py-1 bg-white text-charcoal-600 text-xs rounded-full border border-charcoal-200 hover:border-n60-800 hover:text-n60-800 transition-colors"
             >
               {question}
             </button>
@@ -432,14 +432,14 @@ What would you like to explore further?`
               <div className={`flex items-start space-x-3 max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                   message.type === 'user' 
-                    ? 'bg-n60-500 text-white' 
+                    ? 'bg-n60-800 text-white' 
                     : 'bg-charcoal-100 text-charcoal-600'
                 }`}>
                   {message.type === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                 </div>
                 <div className={`rounded-2xl px-4 py-3 ${
                   message.type === 'user'
-                    ? 'bg-n60-500 text-white'
+                    ? 'bg-n60-800 text-white'
                     : 'bg-charcoal-100 text-charcoal-800'
                 }`}>
                   <p className="text-sm leading-relaxed">{message.content}</p>

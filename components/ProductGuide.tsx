@@ -352,9 +352,46 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
 
       case 3:
         return (
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.nextSteps}</h2>
+            
+            {/* Next Steps List - Single Column Layout */}
+            <div className="space-y-4 max-w-2xl mx-auto">
+              {content.nextSteps.map((step, index) => (
+                <div key={index} className="bg-white border border-charcoal-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-200">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-charcoal-100 text-charcoal-600 rounded-full flex items-center justify-center font-semibold flex-shrink-0">
+                      {index + 1}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-charcoal-700 text-sm leading-relaxed">{step}</p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-charcoal-500 flex-shrink-0 mt-1" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* CTA Section */}
+            <div className="mt-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-charcoal-600 to-charcoal-700 rounded-xl text-white p-6 text-center shadow-lg">
+                <h3 className="text-xl font-semibold mb-3">{t.readyToImplement}</h3>
+                <p className="text-charcoal-100 mb-4 text-sm leading-relaxed">
+                  {t.implementationDescription}
+                </p>
+                <button className="bg-white text-charcoal-600 hover:bg-charcoal-50 font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg">
+                  {t.scheduleConsultation}
+                </button>
+              </div>
+            </div>
+          </div>
+        )
+
+      case 4:
+        return (
           <div>
             <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.costAnalysis}</h2>
-            <div className="bg-gradient-to-r from-n60-50 to-charcoal-50 rounded-xl p-8 border border-n60-200">
+            <div className="bg-gradient-to-r from-charcoal-50 to-charcoal-50 rounded-xl p-8 border border-charcoal-200">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Left Column - Cost Breakdown */}
                 <div className="min-w-0">
@@ -375,7 +412,7 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
                     <div className="border-t border-charcoal-300 pt-3 mt-3">
                       <div className="flex justify-between items-center">
                         <span className="font-semibold text-charcoal-900 text-sm">{t.totalFirstYear}:</span>
-                        <span className="font-bold text-n60-600 text-sm text-right ml-2">{content.costAnalysis.totalFirstYear}</span>
+                        <span className="font-bold text-n60-800 text-sm text-right ml-2">{content.costAnalysis.totalFirstYear}</span>
                       </div>
                     </div>
                   </div>
@@ -385,9 +422,9 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
                 <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-charcoal-900 mb-4">{t.expectedReturns}</h3>
                   <div className="space-y-4">
-                    <div className="text-center p-4 bg-white rounded-lg border border-charcoal-200">
-                      <div className="text-2xl font-bold text-n60-600 mb-2">ROI</div>
-                      <div className="text-sm text-charcoal-600">{content.costAnalysis.roi}</div>
+                    <div className="text-center p-4 bg-n60-800 text-white rounded-lg border border-charcoal-200">
+                      <div className="text-2xl font-bold text-white mb-2">ROI</div>
+                      <div className="text-sm text-n60-100">{content.costAnalysis.roi}</div>
                     </div>
                     <div className="text-sm text-charcoal-700">
                       <p className="mb-2">Basert på din virksomhetsstørrelse og bruksområde kan du forvente:</p>
@@ -400,43 +437,6 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        )
-
-      case 4:
-        return (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.nextSteps}</h2>
-            
-            {/* Next Steps List - Single Column Layout */}
-            <div className="space-y-4 max-w-2xl mx-auto">
-              {content.nextSteps.map((step, index) => (
-                <div key={index} className="bg-white border border-charcoal-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-200">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-n60-100 text-n60-600 rounded-full flex items-center justify-center font-semibold flex-shrink-0">
-                      {index + 1}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-charcoal-700 text-sm leading-relaxed">{step}</p>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-n60-500 flex-shrink-0 mt-1" />
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* CTA Section */}
-            <div className="mt-8 max-w-2xl mx-auto">
-              <div className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-xl text-white p-6 text-center shadow-lg">
-                <h3 className="text-xl font-semibold mb-3">{t.readyToImplement}</h3>
-                <p className="text-n60-100 mb-4 text-sm leading-relaxed">
-                  {t.implementationDescription}
-                </p>
-                <button className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg">
-                  {t.scheduleConsultation}
-                </button>
               </div>
             </div>
           </div>
