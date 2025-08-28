@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, BookOpen, Star, CheckCircle, ArrowRight, Download, Share2, Bookmark } from 'lucide-react'
+import { ChevronLeft, ChevronRight, BookOpen, Star, CheckCircle, ArrowRight, Download, Share2, Bookmark, ArrowLeft } from 'lucide-react'
 
 interface ProductGuideProps {
   userData: {
@@ -389,100 +389,33 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
 
       case 4:
         return (
-          <div>
-            <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.costAnalysis}</h2>
-            <div className="bg-gradient-to-r from-charcoal-50 to-charcoal-50 rounded-xl p-8 border border-charcoal-200">
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
-                {/* Left Column - Cost Breakdown */}
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-semibold text-charcoal-900 mb-4">{t.costBreakdown}</h3>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
-                      <span className="text-charcoal-700 text-sm font-medium">{t.softwareCosts}:</span>
-                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-4">{content.costAnalysis.softwareCosts}</span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
-                      <span className="text-charcoal-700 text-sm font-medium">{t.implementationCosts}:</span>
-                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-4 max-w-[250px]">{content.costAnalysis.implementationCosts}</span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
-                      <span className="text-charcoal-700 text-sm font-medium">{t.trainingCosts}:</span>
-                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-4">{content.costAnalysis.trainingCosts}</span>
-                    </div>
-                    <div className="border-t border-charcoal-300 pt-4 mt-4">
-                      <div className="flex justify-between items-center p-3 bg-n60-50 rounded-lg border border-n60-200">
-                        <span className="font-semibold text-charcoal-900 text-sm">{t.totalFirstYear}:</span>
-                        <span className="font-bold text-n60-800 text-sm text-right ml-4">{content.costAnalysis.totalFirstYear}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Right Column - Expected Returns */}
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-semibold text-charcoal-900 mb-4">{t.expectedReturns}</h3>
-                  <div className="space-y-6">
-                    <div className="text-center p-6 bg-n60-800 text-white rounded-lg border border-charcoal-200 shadow-lg">
-                      <div className="text-3xl font-bold text-white mb-3">ROI</div>
-                      <div className="text-sm text-n60-100">{content.costAnalysis.roi}</div>
-                    </div>
-                    <div className="text-sm text-charcoal-700 bg-white p-4 rounded-lg border border-charcoal-200">
-                      <p className="mb-3 font-medium">Basert på din virksomhetsstørrelse og bruksområde kan du forvente:</p>
-                      <ul className="space-y-2">
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
-                          {t.efficiencyImprovement}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
-                          {t.timeSavings}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
-                          {t.betterDecisions}
-                        </li>
-                        <li className="flex items-center">
-                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
-                          {t.teamCollaboration}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-
-      case 5:
-        return (
           <div className="text-center">
             <div className="mb-8">
-              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-charcoal-900 mb-4">{t.guideComplete}</h2>
+              <CheckCircle className="w-16 h-16 text-secondary-500 mx-auto mb-4" />
+              <h2 className="text-2xl font-bold text-n60-800 mb-4">{t.guideComplete}</h2>
               <p className="text-charcoal-600 max-w-2xl mx-auto">
                 {t.guideDescription}
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-n60-500 transition-colors">
-                <Download className="w-5 h-5 text-n60-500" />
+              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-secondary-500 transition-colors">
+                <Download className="w-5 h-5 text-secondary-500" />
                 <span className="text-charcoal-700">{t.downloadPDF}</span>
               </button>
-              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-n60-500 transition-colors">
-                <Share2 className="w-5 h-5 text-n60-500" />
+              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-secondary-500 transition-colors">
+                <Share2 className="w-5 h-5 text-secondary-500" />
                 <span className="text-charcoal-700">{t.shareGuide}</span>
               </button>
               <button 
                 onClick={() => setIsBookmarked(!isBookmarked)}
                 className={`flex items-center justify-center space-x-2 p-4 rounded-lg transition-colors ${
                   isBookmarked 
-                    ? 'bg-n60-100 border-n60-500 text-n60-700' 
-                    : 'bg-white border border-charcoal-200 text-charcoal-700 hover:border-n60-500'
+                    ? 'bg-secondary-100 border-secondary-500 text-secondary-700' 
+                    : 'bg-white border border-charcoal-200 text-charcoal-700 hover:border-secondary-500'
                 }`}
               >
-                <Bookmark className={`w-5 h-5 ${isBookmarked ? 'text-n60-600 fill-current' : 'text-n60-500'}`} />
+                <Bookmark className={`w-5 h-5 ${isBookmarked ? 'text-secondary-600 fill-current' : 'text-secondary-500'}`} />
                 <span>{isBookmarked ? t.bookmarked : t.bookmark}</span>
               </button>
             </div>
@@ -498,79 +431,142 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
           </div>
         )
 
+      case 5:
+        return (
+          <div>
+            <h2 className="text-2xl font-bold text-n60-800 mb-6 text-center">{t.costAnalysis}</h2>
+            <div className="bg-gradient-to-r from-charcoal-50 to-charcoal-50 rounded-xl p-8 border border-charcoal-200">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+                {/* Left Column - Cost Breakdown */}
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-lg font-semibold text-n60-800 mb-4">{t.costBreakdown}</h3>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
+                      <span className="text-charcoal-700 text-sm font-medium">{t.softwareCosts}:</span>
+                      <span className="font-semibold text-n60-800 text-sm text-right ml-4">{content.costAnalysis.softwareCosts}</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
+                      <span className="text-charcoal-700 text-sm font-medium">{t.implementationCosts}:</span>
+                      <span className="font-semibold text-n60-800 text-sm text-right ml-4 max-w-[250px]">{content.costAnalysis.implementationCosts}</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
+                      <span className="text-charcoal-700 text-sm font-medium">{t.trainingCosts}:</span>
+                      <span className="font-semibold text-n60-800 text-sm text-right ml-4">{content.costAnalysis.trainingCosts}</span>
+                    </div>
+                    <div className="border-t border-charcoal-300 pt-4 mt-4">
+                      <div className="flex justify-between items-center p-3 bg-secondary-50 rounded-lg border border-secondary-200">
+                        <span className="font-semibold text-n60-800 text-sm">{t.totalFirstYear}:</span>
+                        <span className="font-bold text-secondary-600 text-sm text-right ml-4">{content.costAnalysis.totalFirstYear}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Right Column - Expected Returns */}
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-lg font-semibold text-n60-800 mb-4">{t.expectedReturns}</h3>
+                  <div className="space-y-6">
+                    <div className="text-center p-6 bg-n60-800 text-white rounded-lg border border-charcoal-200 shadow-lg">
+                      <div className="text-3xl font-bold text-white mb-3">ROI</div>
+                      <div className="text-sm text-n60-100">{content.costAnalysis.roi}</div>
+                    </div>
+                    <div className="text-sm text-charcoal-700 bg-white p-4 rounded-lg border border-charcoal-200">
+                      <p className="mb-3 font-medium">Basert på din virksomhetsstørrelse og bruksområde kan du forvente:</p>
+                      <ul className="space-y-2">
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-secondary-500 rounded-full mr-3"></span>
+                          {t.efficiencyImprovement}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-secondary-500 rounded-full mr-3"></span>
+                          {t.timeSavings}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-secondary-500 rounded-full mr-3"></span>
+                          {t.betterDecisions}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-secondary-500 rounded-full mr-3"></span>
+                          {t.teamCollaboration}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+
       default:
         return null
     }
   }
 
   return (
-    <div className="bg-gradient-to-br from-charcoal-50 via-white to-n60-50 min-h-screen p-6">
+    <div className="bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50 min-h-screen p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-charcoal-900 mb-2">Din Personlige Produktguide</h1>
+          <h1 className="text-3xl font-bold text-n60-800 mb-2">Din Personlige Produktguide</h1>
           <p className="text-charcoal-700">AI-drevne anbefalinger skreddersyd for dine forretningsbehov</p>
         </div>
 
-        {/* E-Reader Container */}
-        <div className="bg-white rounded-2xl shadow-2xl border border-charcoal-200 overflow-hidden">
-          {/* Navigation Bar */}
-          <div className="bg-gradient-to-r from-charcoal-900 to-charcoal-800 text-white px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <BookOpen className="w-6 h-6 text-n60-400" />
+        {/* Navigation Bar */}
+        <div className="bg-gradient-to-r from-n60-800 to-n60-700 text-white px-6 py-4 rounded-t-2xl mb-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <BookOpen className="w-6 h-6" />
               <span className="font-semibold">Produktguide</span>
             </div>
-            
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-charcoal-200">
+              <button
+                onClick={prevPage}
+                disabled={currentPage === 0}
+                className="p-2 rounded-lg hover:bg-n60-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+              <span className="text-sm font-medium">
                 Side {currentPage + 1} av {totalPages}
               </span>
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={prevPage}
-                  disabled={currentPage === 0}
-                  className="p-2 rounded-lg hover:bg-charcoal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={nextPage}
-                  disabled={currentPage === totalPages - 1}
-                  className="p-2 rounded-lg hover:bg-charcoal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+              <button
+                onClick={nextPage}
+                disabled={currentPage === totalPages - 1}
+                className="p-2 rounded-lg hover:bg-n60-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
+        </div>
 
-          {/* Page Content */}
-          <div className="p-8 min-h-[600px] bg-white">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentPage}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {renderPage(currentPage)}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        {/* Page Content */}
+        <div className="bg-white rounded-b-2xl p-8 shadow-lg border border-charcoal-200">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {renderPage(currentPage)}
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-          {/* Page Indicators */}
-          <div className="bg-charcoal-100 px-6 py-4 flex items-center justify-center space-x-2">
-            {[...Array(totalPages)].map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPage(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentPage ? 'bg-n60-500' : 'bg-charcoal-300 hover:bg-charcoal-400'
-                }`}
-              />
-            ))}
-          </div>
+        {/* Page Navigation Dots */}
+        <div className="flex justify-center space-x-2 mt-6">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i)}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                i === currentPage ? 'bg-n60-800' : 'bg-charcoal-300 hover:bg-charcoal-400'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>

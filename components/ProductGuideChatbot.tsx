@@ -387,7 +387,7 @@ What would you like to explore further?`
             <p className="text-n60-100 text-sm">{t.readyToHelp}</p>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-secondary-400 rounded-full animate-pulse"></div>
             <span className="text-xs text-n60-100">Hybrid AI</span>
           </div>
         </div>
@@ -400,7 +400,7 @@ What would you like to explore further?`
       <div className="p-4 bg-charcoal-50 border-b border-charcoal-200">
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm font-medium text-charcoal-700">{t.quickQuestions}</p>
-          <button className="px-3 py-1 bg-n60-800 text-white text-xs rounded-full hover:bg-n60-700 transition-colors flex items-center space-x-1">
+          <button className="px-3 py-1 bg-secondary-500 text-white text-xs rounded-full hover:bg-secondary-600 transition-colors flex items-center space-x-1">
             <User className="w-3 h-3" />
             <span>Salgsperson</span>
           </button>
@@ -410,7 +410,7 @@ What would you like to explore further?`
             <button
               key={index}
               onClick={() => handleQuickQuestion(question)}
-              className="px-3 py-1 bg-white text-charcoal-600 text-xs rounded-full border border-charcoal-200 hover:border-n60-800 hover:text-n60-800 transition-colors"
+              className="px-3 py-1 bg-white text-charcoal-600 text-xs rounded-full border border-charcoal-200 hover:border-secondary-500 hover:text-secondary-600 transition-colors"
             >
               {question}
             </button>

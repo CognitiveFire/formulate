@@ -117,50 +117,54 @@ export default function ProductGuideLandingPage({ userData }: ProductGuideLandin
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
       {/* Header */}
-      <header className="bg-white border-b border-charcoal-200 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <h1 className="text-2xl font-bold text-charcoal-900">n60.ai</h1>
-            <nav className="hidden md:flex space-x-6">
-              <a href="#" className="text-charcoal-600 hover:text-charcoal-900 transition-colors">Løsninger</a>
-              <a href="#" className="text-charcoal-600 hover:text-charcoal-900 transition-colors">Innovasjon</a>
-              <a href="#" className="text-charcoal-600 hover:text-charcoal-900 transition-colors">Hvordan vi jobber</a>
-              <a href="#" className="text-charcoal-600 hover:text-charcoal-900 transition-colors">Hvorfor AI</a>
-              <a href="#" className="text-charcoal-600 hover:text-charcoal-900 transition-colors">Pris</a>
-            </nav>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={() => setLanguage(language === 'no' ? 'en' : 'no')}
-              className="px-3 py-2 text-sm text-charcoal-600 hover:text-charcoal-900 transition-colors"
-            >
-              {language === 'no' ? 'EN' : 'NO'}
-            </button>
-            <button className="px-4 py-2 bg-charcoal-600 text-white rounded-lg hover:bg-charcoal-700 transition-colors">
-              {t.downloadGuide}
-            </button>
-            <button className="px-4 py-2 border border-charcoal-300 text-charcoal-700 rounded-lg hover:bg-charcoal-50 transition-colors">
-              {t.shareGuide}
-            </button>
+      <header className="bg-white shadow-sm border-b border-charcoal-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-3">
+              <BookOpen className="w-8 h-8 text-n60-800" />
+              <div>
+                <h1 className="text-xl font-bold text-n60-800">{t.header.title}</h1>
+                <p className="text-xs text-charcoal-500">{t.header.subtitle}</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              {/* Language Toggle */}
+              <div className="flex items-center space-x-2 bg-charcoal-100 rounded-lg p-1">
+                <button
+                  onClick={() => setLanguage('no')}
+                  className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                    language === 'no' 
+                      ? 'bg-white text-n60-800 shadow-sm' 
+                      : 'text-charcoal-600 hover:text-n60-800'
+                  }`}
+                >
+                  NO
+                </button>
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
+                    language === 'en' 
+                      ? 'bg-white text-n60-800 shadow-sm' 
+                      : 'text-charcoal-600 hover:text-n60-800'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+              
+              <button className="flex items-center space-x-2 px-4 py-2 text-charcoal-600 hover:text-n60-800 transition-colors">
+                <Download className="w-4 h-4" />
+                <span className="text-sm">{t.downloadGuide}</span>
+              </button>
+              <button className="flex items-center space-x-2 px-4 py-2 text-charcoal-600 hover:text-n60-800 transition-colors">
+                <Share2 className="w-4 h-4" />
+                <span className="text-sm">Del</span>
+              </button>
+            </div>
           </div>
         </div>
       </header>
-
-      {/* Hero Section */}
-      <section className="bg-charcoal-900 text-white py-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            {t.heroTitle}
-          </h1>
-          <p className="text-xl text-charcoal-200 max-w-3xl mx-auto mb-8">
-            {t.heroSubtitle}
-          </p>
-          <button className="bg-white text-charcoal-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-charcoal-50 transition-colors">
-            {t.seeDemo}
-          </button>
-        </div>
-      </section>
 
       {/* Main Content - Product Guide and Chatbot */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 max-w-7xl mx-auto">
@@ -176,21 +180,21 @@ export default function ProductGuideLandingPage({ userData }: ProductGuideLandin
       </div>
 
       {/* Footer */}
-      <footer className="bg-charcoal-900 text-white py-12 px-6 mt-16">
+      <footer className="bg-n60-800 text-white py-12 px-6 mt-16">
         <div className="max-w-7xl mx-auto text-center">
           <h3 className="text-2xl font-bold mb-4">{t.readyToStart}</h3>
-          <p className="text-charcoal-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-n60-100 mb-8 max-w-2xl mx-auto">
             {t.footerDescription}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <button className="px-6 py-3 bg-white text-charcoal-900 rounded-lg font-semibold hover:bg-charcoal-50 transition-colors">
+            <button className="px-6 py-3 bg-secondary-500 text-white rounded-lg font-semibold hover:bg-secondary-600 transition-colors">
               {t.contactUs}
             </button>
-            <button className="px-6 py-3 border border-white text-white rounded-lg font-semibold hover:bg-white hover:text-charcoal-900 transition-colors">
+            <button className="px-6 py-3 border border-white text-white rounded-lg font-semibold hover:bg-white hover:text-n60-800 transition-colors">
               {t.scheduleDemo}
             </button>
           </div>
-          <div className="mt-8 text-charcoal-400 text-sm">
+          <div className="mt-8 text-n60-200 text-sm">
             <p>n60.ai • Oslo, Norge • {t.contactInfo}</p>
           </div>
         </div>
