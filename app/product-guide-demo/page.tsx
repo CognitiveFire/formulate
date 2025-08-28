@@ -67,8 +67,10 @@ export default function ProductGuideDemoPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setStep('guide')
-    // Scroll to top of page
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Ensure we're at the top when switching to guide
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 100)
   }
 
   const updateFormData = (field: string, value: string) => {

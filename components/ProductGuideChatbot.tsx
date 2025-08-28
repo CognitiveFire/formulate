@@ -331,13 +331,22 @@ What would you like to explore further?`
     setIsTyping(false)
   }
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim()) return
+  const handleQuickQuestion = (question: string) => {
+    setInputValue(question)
+    // Automatically send the question after a brief delay to simulate user interaction
+    setTimeout(() => {
+      handleSendMessage(question)
+    }, 100)
+  }
+
+  const handleSendMessage = async (messageText?: string) => {
+    const textToSend = messageText || inputValue
+    if (!textToSend.trim()) return
     
     const userMessage: Message = {
       id: Date.now().toString(),
       type: 'user',
-      content: inputValue,
+      content: textToSend,
       timestamp: new Date()
     }
     
@@ -345,11 +354,7 @@ What would you like to explore further?`
     setInputValue('')
     
     // Generate AI response
-    await generateAIResponse(inputValue)
-  }
-
-  const handleQuickQuestion = (question: string) => {
-    setInputValue(question)
+    await generateAIResponse(textToSend)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

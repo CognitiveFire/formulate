@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { BookOpen, Bot, Download, Share2, ArrowRight, Star, CheckCircle, Users, TrendingUp, Globe } from 'lucide-react'
 import ProductGuide from './ProductGuide'
@@ -21,6 +21,11 @@ interface ProductGuideLandingPageProps {
 
 export default function ProductGuideLandingPage({ userData }: ProductGuideLandingPageProps) {
   const [language, setLanguage] = useState<'no' | 'en'>('no')
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
 
   const translations = {
     no: {

@@ -403,21 +403,21 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
         return (
           <div>
             <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.nextSteps}</h2>
-            <div className="space-y-4">
+            <div className="space-y-4 mb-8">
               {content.nextSteps.map((step, index) => (
-                <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-lg border border-charcoal-200 shadow-sm">
-                  <div className="w-8 h-8 bg-n60-100 text-n60-600 rounded-full flex items-center justify-center font-semibold">
+                <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-lg border border-charcoal-200 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-8 h-8 bg-n60-100 text-n60-600 rounded-full flex items-center justify-center font-semibold flex-shrink-0">
                     {index + 1}
                   </div>
-                  <span className="text-charcoal-700 flex-1">{step}</span>
-                  <ArrowRight className="w-5 h-5 text-n60-500" />
+                  <span className="text-charcoal-700 flex-1 text-sm leading-relaxed">{step}</span>
+                  <ArrowRight className="w-5 h-5 text-n60-500 flex-shrink-0" />
                 </div>
               ))}
             </div>
             
-            <div className="mt-8 p-6 bg-gradient-to-r from-n60-600 to-n60-700 rounded-xl text-white text-center">
+            <div className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-xl text-white p-6 text-center">
               <h3 className="text-xl font-semibold mb-3">{t.readyToImplement}</h3>
-              <p className="text-n60-100 mb-4">
+              <p className="text-n60-100 mb-4 text-sm leading-relaxed">
                 {t.implementationDescription}
               </p>
               <button className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
