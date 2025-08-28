@@ -1,27 +1,18 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Send, Bot, User, MessageCircle, HelpCircle, BookOpen, Star, TrendingUp, Target } from 'lucide-react'
+import { Bot, User, Send, ArrowRight } from 'lucide-react'
 
 interface Message {
   id: string
-  type: 'user' | 'bot'
+  type: 'user' | 'assistant'
   content: string
   timestamp: Date
 }
 
 interface ProductGuideChatbotProps {
-  userData: {
-    name: string
-    company: string
-    productType: string
-    useCase: string
-    companySize: string
-    budget: string
-    requirements?: string
-    timeline?: string
-  }
+  userData: any
   language: 'no' | 'en'
 }
 
@@ -29,6 +20,7 @@ export default function ProductGuideChatbot({ userData, language }: ProductGuide
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const chatContainerRef = useRef<HTMLDivElement>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const translations = {
@@ -269,7 +261,7 @@ What would you like to explore further?`
     if (messages.length === 0) {
       setMessages([{
         id: '1',
-        type: 'bot',
+        type: 'assistant',
         content: t.welcome,
         timestamp: new Date()
       }])
@@ -322,7 +314,7 @@ What would you like to explore further?`
     
     const newMessage: Message = {
       id: Date.now().toString(),
-      type: 'bot',
+      type: 'assistant',
       content: response,
       timestamp: new Date()
     }
@@ -344,6 +336,13 @@ What would you like to explore further?`
     
     // Generate AI response
     generateAIResponse(question)
+    
+    // Scroll to bottom of chat after a brief delay to ensure messages are rendered
+    setTimeout(() => {
+      if (chatContainerRef.current) {
+        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+      }
+    }, 100)
   }
 
   const handleSendMessage = async (messageText?: string) => {
@@ -420,7 +419,7 @@ What would you like to explore further?`
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4">
         <AnimatePresence>
           {messages.map((message) => (
             <motion.div
@@ -443,26 +442,26 @@ What would you like to explore further?`
                     ? 'bg-n60-500 text-white'
                     : 'bg-charcoal-100 text-charcoal-800'
                 }`}>
-                  <div className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</div>
-                  <div className={`text-xs mt-2 ${
-                    message.type === 'user' ? 'text-n60-100' : 'text-charcoal-500'
-                  }`}>
-                    {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </div>
+                  <p className="text-sm leading-relaxed">{message.content}</p>
+                  <p className="text-xs opacity-70 mt-2">
+                    {message.timestamp.toLocaleTimeString(language === 'no' ? 'no-NO' : 'en-US', { 
+                      hour: '2-digit', 
+                      minute: '2-digit' 
+                    })}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </AnimatePresence>
-
-        {/* Typing Indicator */}
+        
         {isTyping && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex justify-start"
           >
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start space-x-3 max-w-[80%]">
               <div className="w-8 h-8 bg-charcoal-100 text-charcoal-600 rounded-full flex items-center justify-center">
                 <Bot className="w-4 h-4" />
               </div>
@@ -476,8 +475,6 @@ What would you like to explore further?`
             </div>
           </motion.div>
         )}
-        
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Input Area */}

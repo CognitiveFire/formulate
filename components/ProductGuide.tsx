@@ -411,7 +411,7 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
             <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.nextSteps}</h2>
             
             {/* Next Steps List - Single Column Layout */}
-            <div className="space-y-4 max-w-3xl mx-auto">
+            <div className="space-y-4 max-w-2xl mx-auto">
               {content.nextSteps.map((step, index) => (
                 <div key={index} className="bg-white border border-charcoal-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-200">
                   <div className="flex items-start space-x-4">
