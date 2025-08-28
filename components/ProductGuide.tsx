@@ -236,20 +236,24 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
               <p className="text-charcoal-700 max-w-2xl mx-auto">{content.executiveSummary}</p>
             </div>
             
-            <div className="bg-gradient-to-r from-n60-50 to-charcoal-50 rounded-xl p-6 border border-n60-200">
+            <div className="bg-gradient-to-r from-n60-50 to-charcoal-50 rounded-xl p-6 border border-n60-200 shadow-sm">
               <h2 className="text-xl font-semibold text-charcoal-900 mb-4">{t.profileSummary}</h2>
               <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="text-left">
-                  <span className="font-medium text-charcoal-700">{t.company}:</span> {userData.company}
+                <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
+                  <span className="font-medium text-charcoal-700">{t.company}:</span>
+                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.company}</span>
                 </div>
-                <div className="text-left">
-                  <span className="font-medium text-charcoal-700">{t.size}:</span> {userData.companySize}
+                <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
+                  <span className="font-medium text-charcoal-700">{t.size}:</span>
+                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.companySize}</span>
                 </div>
-                <div className="text-left">
-                  <span className="font-medium text-charcoal-700">{t.focus}:</span> {userData.useCase}
+                <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
+                  <span className="font-medium text-charcoal-700">{t.focus}:</span>
+                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.useCase}</span>
                 </div>
-                <div className="text-left">
-                  <span className="font-medium text-charcoal-700">{t.budget}:</span> {userData.budget}
+                <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
+                  <span className="font-medium text-charcoal-700">{t.budget}:</span>
+                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.budget}</span>
                 </div>
               </div>
             </div>
@@ -401,28 +405,37 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
 
       case 4:
         return (
-          <div>
+          <div className="space-y-6">
             <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.nextSteps}</h2>
-            <div className="space-y-4 mb-8">
+            
+            {/* Next Steps List */}
+            <div className="space-y-4">
               {content.nextSteps.map((step, index) => (
-                <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-lg border border-charcoal-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-8 h-8 bg-n60-100 text-n60-600 rounded-full flex items-center justify-center font-semibold flex-shrink-0">
-                    {index + 1}
+                <div key={index} className="bg-white border border-charcoal-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-200">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-n60-100 text-n60-600 rounded-full flex items-center justify-center font-semibold flex-shrink-0">
+                      {index + 1}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-charcoal-700 text-sm leading-relaxed">{step}</p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-n60-500 flex-shrink-0 mt-1" />
                   </div>
-                  <span className="text-charcoal-700 flex-1 text-sm leading-relaxed">{step}</span>
-                  <ArrowRight className="w-5 h-5 text-n60-500 flex-shrink-0" />
                 </div>
               ))}
             </div>
             
-            <div className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-xl text-white p-6 text-center">
-              <h3 className="text-xl font-semibold mb-3">{t.readyToImplement}</h3>
-              <p className="text-n60-100 mb-4 text-sm leading-relaxed">
-                {t.implementationDescription}
-              </p>
-              <button className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
-                {t.scheduleConsultation}
-              </button>
+            {/* CTA Section */}
+            <div className="mt-8">
+              <div className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-xl text-white p-6 text-center">
+                <h3 className="text-xl font-semibold mb-3">{t.readyToImplement}</h3>
+                <p className="text-n60-100 mb-4 text-sm leading-relaxed max-w-2xl mx-auto">
+                  {t.implementationDescription}
+                </p>
+                <button className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg">
+                  {t.scheduleConsultation}
+                </button>
+              </div>
             </div>
           </div>
         )
@@ -477,39 +490,39 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
   }
 
   return (
-    <div className="bg-gradient-to-br from-charcoal-50 to-n60-50 min-h-screen p-6">
+    <div className="bg-gradient-to-br from-charcoal-50 via-white to-n60-50 min-h-screen p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-charcoal-900 mb-2">Din Personlige Produktguide</h1>
-          <p className="text-charcoal-600">AI-drevne anbefalinger skreddersyd for dine forretningsbehov</p>
+          <p className="text-charcoal-700">AI-drevne anbefalinger skreddersyd for dine forretningsbehov</p>
         </div>
 
         {/* E-Reader Container */}
         <div className="bg-white rounded-2xl shadow-2xl border border-charcoal-200 overflow-hidden">
           {/* Navigation Bar */}
-          <div className="bg-charcoal-900 text-white px-6 py-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-charcoal-900 to-charcoal-800 text-white px-6 py-4 flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <BookOpen className="w-6 h-6 text-n60-400" />
               <span className="font-semibold">Produktguide</span>
             </div>
             
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-charcoal-300">
+              <span className="text-sm text-charcoal-200">
                 Side {currentPage + 1} av {totalPages}
               </span>
               <div className="flex items-center space-x-2">
                 <button
                   onClick={prevPage}
                   disabled={currentPage === 0}
-                  className="p-2 rounded-lg hover:bg-charcoal-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="p-2 rounded-lg hover:bg-charcoal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={nextPage}
                   disabled={currentPage === totalPages - 1}
-                  className="p-2 rounded-lg hover:bg-charcoal-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="p-2 rounded-lg hover:bg-charcoal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -518,7 +531,7 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
           </div>
 
           {/* Page Content */}
-          <div className="p-8 min-h-[600px]">
+          <div className="p-8 min-h-[600px] bg-white">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentPage}
