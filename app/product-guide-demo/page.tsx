@@ -12,8 +12,8 @@ export default function ProductGuideDemoPage() {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
-    productType: '',
-    useCase: '',
+    productType: [] as string[],
+    useCase: [] as string[],
     companySize: '',
     budget: '',
     requirements: '',
@@ -66,6 +66,14 @@ export default function ProductGuideDemoPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Convert arrays to comma-separated strings for the guide component
+    const guideData = {
+      ...formData,
+      productType: Array.isArray(formData.productType) ? formData.productType.join(', ') : formData.productType,
+      useCase: Array.isArray(formData.useCase) ? formData.useCase.join(', ') : formData.useCase
+    }
+    
     setStep('guide')
     // Ensure we're at the top when switching to guide
     setTimeout(() => {
@@ -73,12 +81,18 @@ export default function ProductGuideDemoPage() {
     }, 100)
   }
 
-  const updateFormData = (field: string, value: string) => {
+  const updateFormData = (field: string, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
   if (step === 'guide') {
-    return <ProductGuideLandingPage userData={formData} />
+    // Convert arrays to comma-separated strings for the guide component
+    const guideData = {
+      ...formData,
+      productType: Array.isArray(formData.productType) ? formData.productType.join(', ') : formData.productType,
+      useCase: Array.isArray(formData.useCase) ? formData.useCase.join(', ') : formData.useCase
+    }
+    return <ProductGuideLandingPage userData={guideData} />
   }
 
   return (
@@ -172,9 +186,9 @@ export default function ProductGuideDemoPage() {
                         checked={formData.productType.includes(type)}
                         onChange={(e) => {
                           if (e.target.checked) {
-                            updateFormData('productType', formData.productType ? `${formData.productType}, ${type}` : type)
+                            updateFormData('productType', [...formData.productType, type])
                           } else {
-                            updateFormData('productType', formData.productType.replace(new RegExp(`(, )?${type}`), '').replace(/^, /, ''))
+                            updateFormData('productType', formData.productType.filter(t => t !== type))
                           }
                         }}
                         className="w-4 h-4 text-n60-600 border-charcoal-300 rounded focus:ring-n60-500 focus:ring-2"
@@ -184,10 +198,10 @@ export default function ProductGuideDemoPage() {
                   ))}
                 </div>
                 {/* Display selected product types */}
-                {formData.productType && (
+                {formData.productType && formData.productType.length > 0 && (
                   <div className="mt-3 p-3 bg-n60-50 border border-n60-200 rounded-lg">
                     <p className="text-sm font-medium text-n60-800 mb-1">Valgte produkttyper:</p>
-                    <p className="text-sm text-charcoal-700">{formData.productType}</p>
+                    <p className="text-sm text-charcoal-700">{formData.productType.join(', ')}</p>
                   </div>
                 )}
               </div>
@@ -205,9 +219,9 @@ export default function ProductGuideDemoPage() {
                         checked={formData.useCase.includes(useCase)}
                         onChange={(e) => {
                           if (e.target.checked) {
-                            updateFormData('useCase', formData.useCase ? `${formData.useCase}, ${useCase}` : useCase)
+                            updateFormData('useCase', [...formData.useCase, useCase])
                           } else {
-                            updateFormData('useCase', formData.useCase.replace(new RegExp(`(, )?${useCase}`), '').replace(/^, /, ''))
+                            updateFormData('useCase', formData.useCase.filter(uc => uc !== useCase))
                           }
                         }}
                         className="w-4 h-4 text-n60-600 border-charcoal-300 rounded focus:ring-n60-500 focus:ring-2"
@@ -217,10 +231,10 @@ export default function ProductGuideDemoPage() {
                   ))}
                 </div>
                 {/* Display selected use cases */}
-                {formData.useCase && (
+                {formData.useCase && formData.useCase.length > 0 && (
                   <div className="mt-3 p-3 bg-n60-50 border border-n60-200 rounded-lg">
                     <p className="text-sm font-medium text-n60-800 mb-1">Valgte bruksområder:</p>
-                    <p className="text-sm text-charcoal-700">{formData.useCase}</p>
+                    <p className="text-sm text-charcoal-700">{formData.useCase.join(', ')}</p>
                   </div>
                 )}
               </div>
