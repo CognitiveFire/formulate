@@ -21,52 +21,54 @@ export default function ProductGuideDemoPage() {
   })
 
   const productTypes = [
-    'Software & SaaS',
-    'Hardware & Equipment',
-    'Marketing Tools',
-    'Analytics & Data',
-    'Security Solutions',
-    'Communication Tools',
+    'AI Marketing Tools',
+    'Lead Generation Software',
+    'International Expansion Platform',
+    'Product Marketing Suite',
+    'Customer Analytics Platform',
+    'Marketing Automation Tools',
     'Other'
   ]
 
   const useCases = [
-    'Business Operations',
-    'Customer Management',
-    'Team Collaboration',
-    'Data Analysis',
-    'Marketing & Sales',
-    'Product Development',
+    'Product Marketing',
+    'Lead Generation',
+    'International Expansion',
+    'Customer Analytics',
+    'Marketing Automation',
+    'Sales Enablement',
     'Other'
   ]
 
   const companySizes = [
-    'Startup (1-10 employees)',
-    'Small Business (11-50 employees)',
-    'Medium Business (51-200 employees)',
-    'Large Business (200+ employees)',
-    'Enterprise (1000+ employees)'
+    'Startup (1-10 ansatte)',
+    'Small Business (11-50 ansatte)',
+    'Medium Business (51-200 ansatte)',
+    'Large Business (200+ ansatte)',
+    'Enterprise (1000+ ansatte)'
   ]
 
   const budgetRanges = [
-    'Under $100/month',
-    '$100 - $500/month',
-    '$500 - $2000/month',
-    '$2000 - $10000/month',
-    '$10000+/month'
+    'kr 30,000 - kr 75,000/mnd',
+    'kr 75,000 - kr 150,000/mnd',
+    'kr 150,000 - kr 250,000/mnd',
+    'kr 250,000 - kr 300,000/mnd',
+    'kr 300,000+/mnd'
   ]
 
   const timelines = [
-    'Immediate (within 1 month)',
-    'Short-term (1-3 months)',
-    'Medium-term (3-6 months)',
-    'Long-term (6+ months)',
-    'Just exploring options'
+    'Umiddelbart (innen 1 måned)',
+    'Kort sikt (1-3 måneder)',
+    'Mellomlang sikt (3-6 måneder)',
+    'Lang sikt (6+ måneder)',
+    'Bare utforsker alternativer'
   ]
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setStep('guide')
+    // Scroll to top of page
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const updateFormData = (field: string, value: string) => {
@@ -85,7 +87,7 @@ export default function ProductGuideDemoPage() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
               <Wand2 className="w-8 h-8 text-n60-500" />
-              <span className="text-xl font-bold text-white">Formulate</span>
+              <span className="text-xl font-bold text-white">n60.ai</span>
             </Link>
             <div className="hidden lg:flex items-center space-x-4">
               <Link href="/demo" className="text-charcoal-300 hover:text-white transition-colors">
@@ -113,30 +115,30 @@ export default function ProductGuideDemoPage() {
           >
             <div className="inline-flex items-center space-x-2 bg-n60-100 text-n60-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Sparkles className="w-4 h-4" />
-              <span>Personalized Product Guide Demo</span>
+              <span>Personlig Produktguide Demo</span>
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-              Get Your Personalized
-              <span className="text-n60-500 block">Product Guide</span>
+              Få Din Personlige
+              <span className="text-n60-500 block">Produktguide</span>
             </h1>
             <p className="text-lg sm:text-xl text-charcoal-300 mb-8 max-w-3xl mx-auto">
-              Experience how AI creates a customized product guide tailored to your business needs. 
-              Fill out the form below to see your personalized recommendations in action.
+              Opplev hvordan AI skaper en skreddersydd produktguide tilpasset dine forretningsbehov. 
+              Fyll ut skjemaet nedenfor for å se dine personlige anbefalinger i aksjon.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4 text-sm text-charcoal-400">
               <div className="flex items-center space-x-2">
                 <Star className="w-4 h-4 text-n60-500" />
-                <span>AI-powered recommendations</span>
+                <span>AI-drevne anbefalinger</span>
               </div>
               <div className="flex items-center space-x-2">
                 <BookOpen className="w-4 h-4 text-n60-500" />
-                <span>Interactive e-reader guide</span>
+                <span>Interaktiv e-leser guide</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Bot className="w-4 h-4 text-n60-500" />
-                <span>AI chatbot assistant</span>
+                <span>AI chatbot assistent</span>
               </div>
             </div>
           </motion.div>
@@ -157,10 +159,10 @@ export default function ProductGuideDemoPage() {
                 <BookOpen className="w-8 h-8 text-n60-600" />
               </div>
               <h2 className="text-2xl font-bold text-white mb-2">
-                Create Your Personalized Product Guide
+                Opprett Din Personlige Produktguide
               </h2>
               <p className="text-charcoal-300">
-                Tell us about your business needs and get AI-powered product recommendations
+                Fortell oss om dine forretningsbehov og få AI-drevne produktanbefalinger
               </p>
             </div>
 
@@ -168,7 +170,7 @@ export default function ProductGuideDemoPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                    Your Name *
+                    Ditt Navn *
                   </label>
                   <input
                     type="text"
@@ -176,13 +178,13 @@ export default function ProductGuideDemoPage() {
                     value={formData.name}
                     onChange={(e) => updateFormData('name', e.target.value)}
                     className="input-field"
-                    placeholder="Enter your full name"
+                    placeholder="Skriv ditt fullnavn"
                   />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                    Company Name *
+                    Virksomhetsnavn *
                   </label>
                   <input
                     type="text"
@@ -190,7 +192,7 @@ export default function ProductGuideDemoPage() {
                     value={formData.company}
                     onChange={(e) => updateFormData('company', e.target.value)}
                     className="input-field"
-                    placeholder="Enter your company name"
+                    placeholder="Skriv virksomhetsnavn"
                   />
                 </div>
               </div>
@@ -198,7 +200,7 @@ export default function ProductGuideDemoPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                    What type of products are you looking for? *
+                    Hvilken type produkter leter du etter? *
                   </label>
                   <select
                     required
@@ -206,7 +208,7 @@ export default function ProductGuideDemoPage() {
                     onChange={(e) => updateFormData('productType', e.target.value)}
                     className="input-field"
                   >
-                    <option value="">Select product type...</option>
+                    <option value="">Velg produkttype...</option>
                     {productTypes.map(type => (
                       <option key={type} value={type}>{type}</option>
                     ))}
@@ -215,7 +217,7 @@ export default function ProductGuideDemoPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                    What is your primary use case? *
+                    Hva er ditt primære bruksområde? *
                   </label>
                   <select
                     required
@@ -223,7 +225,7 @@ export default function ProductGuideDemoPage() {
                     onChange={(e) => updateFormData('useCase', e.target.value)}
                     className="input-field"
                   >
-                    <option value="">Select use case...</option>
+                    <option value="">Velg bruksområde...</option>
                     {useCases.map(useCase => (
                       <option key={useCase} value={useCase}>{useCase}</option>
                     ))}
@@ -234,7 +236,7 @@ export default function ProductGuideDemoPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                    Company Size *
+                    Virksomhetsstørrelse *
                   </label>
                   <select
                     required
@@ -242,7 +244,7 @@ export default function ProductGuideDemoPage() {
                     onChange={(e) => updateFormData('companySize', e.target.value)}
                     className="input-field"
                   >
-                    <option value="">Select company size...</option>
+                    <option value="">Velg virksomhetsstørrelse...</option>
                     {companySizes.map(size => (
                       <option key={size} value={size}>{size}</option>
                     ))}
@@ -251,7 +253,7 @@ export default function ProductGuideDemoPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                    Budget Range *
+                    Budsjettsområde *
                   </label>
                   <select
                     required
@@ -259,7 +261,7 @@ export default function ProductGuideDemoPage() {
                     onChange={(e) => updateFormData('budget', e.target.value)}
                     className="input-field"
                   >
-                    <option value="">Select budget range...</option>
+                    <option value="">Velg budsjettsområde...</option>
                     {budgetRanges.map(budget => (
                       <option key={budget} value={budget}>{budget}</option>
                     ))}
@@ -269,27 +271,27 @@ export default function ProductGuideDemoPage() {
 
               <div>
                 <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                  Specific Requirements or Pain Points
+                  Spesifikke krav eller utfordringer
                 </label>
                 <textarea
                   value={formData.requirements}
                   onChange={(e) => updateFormData('requirements', e.target.value)}
                   rows={3}
                   className="input-field"
-                  placeholder="Describe your specific needs, challenges, or requirements..."
+                  placeholder="Beskriv dine spesifikke behov, utfordringer eller krav..."
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-charcoal-300 mb-2">
-                  Implementation Timeline
+                  Implementeringstidslinje
                 </label>
                 <select
                   value={formData.timeline}
                   onChange={(e) => updateFormData('timeline', e.target.value)}
                   className="input-field"
                 >
-                  <option value="">Select timeline...</option>
+                  <option value="">Velg tidslinje...</option>
                   {timelines.map(timeline => (
                     <option key={timeline} value={timeline}>{timeline}</option>
                   ))}
@@ -302,12 +304,12 @@ export default function ProductGuideDemoPage() {
                   className="w-full btn-primary text-lg py-4 flex items-center justify-center space-x-2"
                 >
                   <Sparkles className="w-5 h-5" />
-                  <span>Generate My Personalized Product Guide</span>
+                  <span>Generer Min Personlige Produktguide</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 <p className="text-xs text-charcoal-400 text-center mt-3">
-                  AI will analyze your responses and create a customized guide with product recommendations, 
-                  implementation strategies, and cost analysis.
+                  AI vil analysere dine svar og lage en skreddersydd guide med produktanbefalinger, 
+                  implementeringsstrategier og kostnadsanalyse.
                 </p>
               </div>
             </form>
@@ -320,10 +322,10 @@ export default function ProductGuideDemoPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              What You'll Get
+              Hva Du Får
             </h2>
             <p className="text-lg text-charcoal-300">
-              Your personalized product guide includes everything you need to make informed decisions
+              Din personlige produktguide inkluderer alt du trenger for å ta informerte beslutninger
             </p>
           </div>
 
@@ -332,9 +334,9 @@ export default function ProductGuideDemoPage() {
               <div className="w-16 h-16 bg-n60-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="w-8 h-8 text-n60-600" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Interactive Guide</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Interaktiv Guide</h3>
               <p className="text-charcoal-300">
-                Flip through your personalized recommendations in an e-reader style interface with professional formatting.
+                Bla gjennom dine personlige anbefalinger i et e-leser stil grensesnitt med profesjonell formatering.
               </p>
             </div>
 
@@ -342,9 +344,9 @@ export default function ProductGuideDemoPage() {
               <div className="w-16 h-16 bg-n60-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Bot className="w-8 h-8 text-n60-600" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">AI Assistant</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">AI Assistent</h3>
               <p className="text-charcoal-300">
-                Get instant answers to your questions with our AI chatbot that understands your specific needs.
+                Få øyeblikkelige svar på dine spørsmål med vår AI chatbot som forstår dine spesifikke behov.
               </p>
             </div>
 
@@ -352,9 +354,9 @@ export default function ProductGuideDemoPage() {
               <div className="w-16 h-16 bg-n60-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-8 h-8 text-n60-600" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Actionable Insights</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Handlingsorienterte Innspill</h3>
               <p className="text-charcoal-300">
-                Receive implementation roadmaps, cost analysis, and ROI projections tailored to your business.
+                Motta implementeringsveikart, kostnadsanalyse og ROI-prognoser skreddersyd for din virksomhet.
               </p>
             </div>
           </div>
