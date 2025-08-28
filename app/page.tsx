@@ -57,7 +57,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
       {/* Hero Section */}
-      <div className="min-h-screen bg-n60-800 text-white">
+      <div className="min-h-screen bg-gradient-to-br from-n60-800 via-n60-700 to-n60-900 text-white">
         <nav className="bg-n60-800/90 backdrop-blur-md border-b border-n60-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
@@ -83,18 +83,18 @@ export default function HomePage() {
           </div>
         </nav>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold mb-3">
               AI-drevne landingssider
             </h1>
-            <p className="text-xl md:text-2xl text-n60-100 mb-6 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-n60-100 mb-4 max-w-3xl mx-auto">
               Opprett imponerende, konverteringsoptimaliserte landingssider på minutter med vår AI-drevne plattform
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/builder"
-                className="bg-white text-n60-800 hover:bg-n60-50 font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="bg-[#2887fd] text-white hover:bg-[#1d6fd8] font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
               >
                 <span>Start å bygge</span>
                 <ArrowRight className="w-5 h-5" />
