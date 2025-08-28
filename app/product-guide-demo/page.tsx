@@ -257,6 +257,13 @@ export default function ProductGuideDemoPage() {
                     <option key={size} value={size}>{size}</option>
                   ))}
                 </select>
+                {/* Display selected company size */}
+                {formData.companySize && (
+                  <div className="mt-3 p-3 bg-n60-50 border border-n60-200 rounded-lg">
+                    <p className="text-sm font-medium text-n60-800 mb-1">Valgt bedriftsstørrelse:</p>
+                    <p className="text-sm text-charcoal-700">{formData.companySize}</p>
+                  </div>
+                )}
               </div>
 
               {/* Budget */}
@@ -277,6 +284,13 @@ export default function ProductGuideDemoPage() {
                     <option key={budget} value={budget}>{budget}</option>
                   ))}
                 </select>
+                {/* Display selected budget */}
+                {formData.budget && (
+                  <div className="mt-3 p-3 bg-n60-50 border border-n60-200 rounded-lg">
+                    <p className="text-sm font-medium text-n60-800 mb-1">Valgt budsjett:</p>
+                    <p className="text-sm text-charcoal-700">{formData.budget}</p>
+                  </div>
+                )}
               </div>
 
               {/* Timeline */}
@@ -297,6 +311,13 @@ export default function ProductGuideDemoPage() {
                     <option key={timeline} value={timeline}>{timeline}</option>
                   ))}
                 </select>
+                {/* Display selected timeline */}
+                {formData.timeline && (
+                  <div className="mt-3 p-3 bg-n60-50 border border-n60-200 rounded-lg">
+                    <p className="text-sm font-medium text-n60-800 mb-1">Valgt tidsramme:</p>
+                    <p className="text-sm text-charcoal-700">{formData.timeline}</p>
+                  </div>
+                )}
               </div>
 
               {/* Submit Button */}
