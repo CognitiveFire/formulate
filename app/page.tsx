@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Wand2, ArrowRight, Check, Sparkles, Eye, Globe, BarChart3, Target, TrendingUp, FormInput, Palette, Zap, BookOpen } from 'lucide-react'
+import { Wand2, ArrowRight, Check, Sparkles, Eye, Globe, BarChart3, Target, TrendingUp, FormInput, Palette, Zap, BookOpen, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 import MobileNavigation from '@/components/MobileNavigation'
 
@@ -55,275 +55,152 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-charcoal-900 text-white">
-      {/* Navigation */}
-      <nav className="bg-charcoal-800/90 backdrop-blur-md border-b border-charcoal-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <Wand2 className="w-8 h-8 text-n60-500" />
-              <span className="text-xl font-bold text-white">Formulate</span>
+    <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
+      {/* Hero Section */}
+      <div className="min-h-screen bg-n60-800 text-white">
+        <nav className="bg-n60-800/90 backdrop-blur-md border-b border-n60-700">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <div className="flex items-center space-x-3">
+                <BookOpen className="w-8 h-8 text-white" />
+                <h1 className="text-xl font-bold text-white">Formulate</h1>
+              </div>
+              <div className="hidden md:flex items-center space-x-6">
+                <Link href="/builder" className="text-white hover:text-n60-100 transition-colors">
+                  Builder
+                </Link>
+                <Link href="/wizard" className="text-white hover:text-n60-100 transition-colors">
+                  Wizard
+                </Link>
+                <Link href="/demo" className="text-white hover:text-n60-100 transition-colors">
+                  Demo
+                </Link>
+                <Link href="/product-guide-demo" className="text-white hover:text-n60-100 transition-colors">
+                  Product Guide Demo
+                </Link>
+              </div>
             </div>
-            <div className="hidden lg:flex items-center space-x-4">
-              <Link href="/demo" className="text-charcoal-300 hover:text-white transition-colors">
-                Demo
+          </div>
+        </nav>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              AI-Powered Landing Pages
+            </h1>
+            <p className="text-xl md:text-2xl text-n60-100 mb-8 max-w-3xl mx-auto">
+              Create stunning, conversion-optimized landing pages in minutes with our AI-driven platform
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/builder"
+                className="bg-white text-n60-800 hover:bg-n60-50 font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+              >
+                <span>Start Building</span>
+                <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link href="/wizard" className="btn-secondary">
-                Try It Now
-              </Link>
-              <Link href="/builder" className="btn-primary">
-                Landing Page Builder
+              <Link 
+                href="/demo"
+                className="border-2 border-white text-white hover:bg-white hover:text-n60-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200"
+              >
+                View Demo
               </Link>
             </div>
-            <MobileNavigation currentPage="/" />
           </div>
         </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center space-x-2 bg-n60-100 text-n60-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4" />
-              <span>AI-Powered Form & Landing Page Creation</span>
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-              Create Forms That
-              <span className="text-n60-500 block">Actually Convert</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-charcoal-300 mb-8 max-w-3xl mx-auto">
-              Formulate uses AI to generate the perfect questions for your lead generation forms, 
-              then helps you build beautiful landing pages that turn visitors into customers.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/wizard" className="btn-primary text-lg px-8 py-4">
-                Start Creating
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <Link href="/demo" className="btn-secondary text-lg px-8 py-4">
-                See Demo
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      </div>
 
       {/* Features Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-n60-800 mb-4">
+              Everything You Need to Create High-Converting Landing Pages
+            </h2>
+            <p className="text-xl text-charcoal-600 max-w-2xl mx-auto">
+              From AI-powered content generation to advanced analytics, we've got you covered
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="bg-n60-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-n60-700">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mb-6">
+                <Wand2 className="w-8 h-8 text-n60-800" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">AI Content Generation</h3>
+              <p className="text-n60-100">
+                Generate compelling copy, headlines, and CTAs that convert visitors into customers
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-charcoal-200">
+              <div className="w-16 h-16 bg-n60-800 rounded-xl flex items-center justify-center mb-6">
+                <Palette className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-n60-800 mb-4">Smart Design Templates</h3>
+              <p className="text-charcoal-600">
+                Choose from hundreds of professionally designed templates optimized for conversion
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-charcoal-200">
+              <div className="w-16 h-16 bg-n60-800 rounded-xl flex items-center justify-center mb-6">
+                <BarChart3 className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-n60-800 mb-4">Advanced Analytics</h3>
+              <p className="text-charcoal-600">
+                Track performance, A/B test variations, and optimize for better results
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Content Example Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-n60-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Everything You Need to Generate More Leads
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              See AI Content Generation in Action
             </h2>
-            <p className="text-lg text-charcoal-300 max-w-2xl mx-auto">
-              From AI-powered question generation to professional landing page creation, 
-              Formulate gives you the tools to build high-converting lead generation systems.
+            <p className="text-xl text-n60-100 max-w-2xl mx-auto">
+              Here's an example of AI-generated content for a SaaS landing page
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative group"
-              >
-                <div className="bg-charcoal-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-charcoal-700">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-charcoal-300 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* New Product Guide Demo Section */}
-          <div className="mt-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-2xl p-8 text-white border border-n60-500"
-            >
-              <div className="text-center mb-6">
-                <BookOpen className="w-16 h-16 mx-auto mb-4 text-n60-200" />
-                <h3 className="text-2xl font-bold mb-2">Try Our New Product Guide Demo</h3>
-                <p className="text-n60-100 max-w-2xl mx-auto">
-                  Experience a personalized product guide with AI-powered recommendations, interactive e-reader interface, and intelligent chatbot assistant.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/product-guide-demo" className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-8 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
-                  <span>Try Product Guide Demo</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="/demo" className="border border-white/30 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
-                  View All Demos
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Demo Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-charcoal-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-6">
-                See AI in Action
-              </h2>
-              <p className="text-lg text-charcoal-300 mb-8">
-                Watch how our AI generates the perfect questions for your content type, 
-                then see the landing page preview with form integration.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-n60-100 rounded-full flex items-center justify-center">
-                    <FormInput className="w-4 h-4 text-n60-600" />
-                  </div>
-                  <span className="text-charcoal-300">AI generates relevant questions</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-n60-100 rounded-full flex items-center justify-center">
-                    <Palette className="w-4 h-4 text-n60-600" />
-                  </div>
-                  <span className="text-charcoal-300">Build beautiful landing pages</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-n60-100 rounded-full flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-n60-600" />
-                  </div>
-                  <span className="text-charcoal-300">Get AI-generated content</span>
-                </div>
-              </div>
-
-              <div className="mt-8 space-y-3">
-                <Link href="/demo" className="btn-primary w-full sm:w-auto">
-                  Try Interactive Demo
-                </Link>
-                <Link href="/builder" className="btn-secondary w-full sm:w-auto block sm:inline-block">
-                  View Landing Page Builder
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-gradient-to-br from-n60-50 to-charcoal-700 rounded-2xl p-8 border border-n60-200">
-                <div className="flex items-center space-x-3 mb-6">
-                  <Sparkles className="w-6 h-6 text-n60-600" />
-                  <h3 className="text-lg font-semibold text-n60-800">AI Content Preview</h3>
-                </div>
+          <div className="bg-white rounded-2xl p-8 shadow-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h4 className="font-medium text-n60-800 mb-2">{aiContentExample.title}</h4>
+                <p className="text-charcoal-600 mb-4">{aiContentExample.summary}</p>
                 
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-medium text-charcoal-900 mb-2">{aiContentExample.title}</h4>
-                    <p className="text-sm text-charcoal-700">{aiContentExample.summary}</p>
-                  </div>
-                  
-                  <div>
-                    <h5 className="font-medium text-charcoal-900 mb-2">Key Insights</h5>
-                    <ul className="space-y-1">
-                      {aiContentExample.insights.map((insight, index) => (
-                        <li key={index} className="text-sm text-charcoal-700 flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-n60-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span>{insight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h5 className="font-medium text-charcoal-900 mb-2">Recommendations</h5>
-                    <ul className="space-y-1">
-                      {aiContentExample.recommendations.map((rec, index) => (
-                        <li key={index} className="text-sm text-charcoal-700 flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-n60-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <span>{rec}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                <h5 className="font-medium text-n60-800 mb-2">Key Insights</h5>
+                <ul className="space-y-2 text-charcoal-600">
+                  {aiContentExample.insights.map((insight, index) => (
+                    <li key={index} className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-secondary-500 mr-2 mt-0.5 flex-shrink-0" />
+                      {insight}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div>
+                <h5 className="font-medium text-n60-800 mb-2">Recommendations</h5>
+                <ul className="space-y-2 text-charcoal-600">
+                  {aiContentExample.recommendations.map((rec, index) => (
+                    <li key={index} className="flex items-start">
+                      <ArrowRight className="w-5 h-5 text-secondary-500 mr-2 mt-0.5 flex-shrink-0" />
+                      {rec}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Why Choose Formulate?
-            </h2>
-            <p className="text-lg text-charcoal-300">
-              Join thousands of businesses using AI to create better forms and landing pages
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex items-center space-x-3"
-              >
-                <div className="w-6 h-6 bg-n60-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-n60-600" />
-                </div>
-                <span className="text-charcoal-300">{benefit}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="card bg-gradient-to-r from-n60-600 to-n60-700 text-white border border-n60-500"
-          >
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Transform Your Lead Generation?
-            </h2>
-            <p className="text-n60-100 mb-8">
-              Start creating AI-powered forms and landing pages that actually convert visitors into customers.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/wizard" className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
-                Start Creating Now
-              </Link>
-              <Link href="/demo" className="border border-white/30 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
-                Watch Demo
-              </Link>
-            </div>
-          </motion.div>
         </div>
       </section>
     </div>

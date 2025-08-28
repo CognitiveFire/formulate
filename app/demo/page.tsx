@@ -122,16 +122,19 @@ export default function DemoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-charcoal-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
       {/* Navigation */}
-      <nav className="bg-charcoal-800/90 backdrop-blur-md border-b border-charcoal-700">
+      <nav className="bg-n60-800/90 backdrop-blur-md border-b border-n60-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2">
               <Wand2 className="w-8 h-8 text-n60-500" />
               <span className="text-xl font-bold text-white">Formulate</span>
-            </Link>
+            </div>
             <div className="hidden lg:flex items-center space-x-4">
+              <Link href="/demo" className="text-charcoal-300 hover:text-white transition-colors">
+                Demo
+              </Link>
               <Link href="/wizard" className="btn-secondary">
                 Try It Now
               </Link>
@@ -157,11 +160,11 @@ export default function DemoPage() {
               <span>AI-Powered Question Generation</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-n60-800 mb-6">
               See How AI Generates
               <span className="text-n60-500 block">Perfect Form Questions</span>
             </h1>
-            <p className="text-lg sm:text-xl text-charcoal-300 mb-8 max-w-3xl mx-auto px-4">
+            <p className="text-lg sm:text-xl text-charcoal-600 mb-8 max-w-3xl mx-auto px-4">
               Watch Formulate's AI analyze your content type and description to automatically generate 
               the most relevant questions for your lead generation forms.
             </p>
@@ -175,7 +178,7 @@ export default function DemoPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Panel - Input */}
             <div className="space-y-8">
-              <div className="card bg-charcoal-800 border border-charcoal-700">
+              <div className="card bg-n60-800 border border-n60-700">
                 <h2 className="text-2xl font-bold text-white mb-6">
                   Try the AI Question Generator
                 </h2>
@@ -188,7 +191,7 @@ export default function DemoPage() {
                     <select
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
-                      className="input-field bg-charcoal-700 border-charcoal-600 text-white"
+                      className="input-field bg-n60-700 border-n60-600 text-white"
                     >
                       <option value="">Select a content type...</option>
                       {contentTypes.map(type => (
@@ -206,67 +209,60 @@ export default function DemoPage() {
                       onChange={(e) => setDescription(e.target.value)}
                       rows={4}
                       placeholder="Describe what you want to create..."
-                      className="input-field bg-charcoal-700 border-charcoal-600 text-white"
+                      className="input-field bg-n60-700 border-n60-600 text-white"
                     />
                   </div>
 
-                  <button
-                    onClick={() => setShowExample(true)}
-                    disabled={!selectedType || !description}
-                    className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <Wand2 className="w-4 h-4" />
-                    <span>Generate AI Questions</span>
-                  </button>
-                </div>
-              </div>
-
-              {showExample && selectedType && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="card bg-n60-50 border-n60-200 text-n60-900"
-                >
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-8 h-8 bg-n60-100 rounded-full flex items-center justify-center">
-                      <Check className="w-5 h-5 text-n60-600" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-n60-900">
-                      AI Analysis Complete!
-                    </h3>
-                  </div>
-                  <p className="text-n60-700 mb-4">
-                    Based on your content type and description, AI has generated the perfect questions to collect the right information from your leads.
-                  </p>
-                  <div className="space-y-3">
-                    <Link href="/wizard" className="btn-primary w-full">
-                      Create Your Form Now
-                    </Link>
+                  <div>
                     <button
-                      onClick={() => setShowAIPreview(true)}
-                      className="w-full btn-secondary"
+                      onClick={() => setShowExample(true)}
+                      disabled={!selectedType || !description}
+                      className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <Eye className="w-4 h-4 mr-2 inline" />
-                      Preview AI Content
+                      <Wand2 className="w-4 h-4" />
+                      <span>Generate AI Questions</span>
                     </button>
-                    {getDemoData() && (
-                      <Link 
-                        href={`/builder?formData=${encodeURIComponent(JSON.stringify(getDemoData()))}`}
-                        className="w-full btn-secondary border-n60-200 text-n60-700 hover:bg-n60-50"
-                      >
-                        <Globe className="w-4 h-4 mr-2 inline" />
-                        View Landing Page Preview
-                      </Link>
-                    )}
                   </div>
-                </motion.div>
-              )}
+                </div>
+
+                {showExample && selectedType && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="card bg-n60-50 border-n60-200 text-n60-900"
+                  >
+                    <div className="flex items-center space-x-3 mb-4">
+                      <div className="w-8 h-8 bg-n60-100 rounded-full flex items-center justify-center">
+                        <Check className="w-5 h-5 text-n60-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-n60-900">
+                        AI Analysis Complete!
+                      </h3>
+                    </div>
+                    <p className="text-n60-700 mb-4">
+                      Based on your content type and description, AI has generated the perfect questions to collect the right information from your leads.
+                    </p>
+                    <div className="space-y-3">
+                      <Link href="/wizard" className="btn-primary w-full">
+                        Create Your Form Now
+                      </Link>
+                      <button
+                        onClick={() => setShowAIPreview(true)}
+                        className="w-full btn-secondary"
+                      >
+                        <Eye className="w-4 h-4 mr-2 inline" />
+                        Preview AI Content
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
             </div>
 
             {/* Right Panel - AI Output */}
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-n60-800">
                   AI-Generated Questions
                 </h3>
                 <div className="flex items-center space-x-2 text-sm text-n60-500 bg-n60-100 px-3 py-1 rounded-full">
@@ -279,7 +275,7 @@ export default function DemoPage() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="card bg-charcoal-800 border border-charcoal-700"
+                  className="card bg-n60-800 border border-n60-700"
                 >
                   <div className="space-y-4">
                     {aiQuestions[selectedType as keyof typeof aiQuestions]?.map((question, index) => (
@@ -299,7 +295,7 @@ export default function DemoPage() {
                   </div>
                 </motion.div>
               ) : (
-                <div className="card bg-charcoal-800 border-dashed border-charcoal-600">
+                <div className="card bg-n60-800 border-dashed border-n60-600">
                   <div className="text-center py-12">
                     <Wand2 className="w-12 h-12 text-charcoal-500 mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-charcoal-400 mb-2">
@@ -326,14 +322,14 @@ export default function DemoPage() {
                   
                   <div className="space-y-4">
                     <div>
-                      <h5 className="font-medium text-charcoal-900 mb-2">Summary</h5>
+                      <h5 className="font-medium text-n60-800 mb-2">Summary</h5>
                       <p className="text-sm text-charcoal-700">
                         {aiGeneratedContent[selectedType as keyof typeof aiGeneratedContent].summary}
                       </p>
                     </div>
                     
                     <div>
-                      <h5 className="font-medium text-charcoal-900 mb-2">Key Insights</h5>
+                      <h5 className="font-medium text-n60-800 mb-2">Key Insights</h5>
                       <ul className="space-y-1">
                         {aiGeneratedContent[selectedType as keyof typeof aiGeneratedContent].keyInsights.slice(0, 2).map((insight, index) => (
                           <li key={index} className="text-sm text-charcoal-700 flex items-start space-x-2">
@@ -354,7 +350,7 @@ export default function DemoPage() {
               )}
 
               {/* How It Works */}
-              <div className="card bg-gradient-to-r from-charcoal-800 to-n60-900 border border-charcoal-700">
+              <div className="card bg-gradient-to-r from-n60-800 to-n60-900 border border-n60-700">
                 <h4 className="font-semibold text-white mb-3">How AI Question Generation Works</h4>
                 <div className="space-y-3 text-sm text-charcoal-300">
                   <div className="flex items-center space-x-2">

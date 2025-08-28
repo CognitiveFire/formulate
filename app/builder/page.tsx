@@ -24,18 +24,24 @@ export default function BuilderPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-charcoal-900">
+    <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
       {/* Navigation */}
-      <nav className="bg-charcoal-800/90 backdrop-blur-md border-b border-charcoal-700">
+      <nav className="bg-n60-800/90 backdrop-blur-md border-b border-n60-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2">
               <Wand2 className="w-8 h-8 text-n60-500" />
               <span className="text-xl font-bold text-white">Formulate</span>
-            </Link>
-            <div className="hidden lg:block">
-              <Link href="/wizard" className="btn-secondary">
-                Create New Form
+            </div>
+            <div className="hidden lg:flex items-center space-x-4">
+              <Link href="/" className="text-charcoal-300 hover:text-white transition-colors">
+                Home
+              </Link>
+              <Link href="/demo" className="text-charcoal-300 hover:text-white transition-colors">
+                Demo
+              </Link>
+              <Link href="/wizard" className="text-charcoal-300 hover:text-white transition-colors">
+                Wizard
               </Link>
             </div>
             <MobileNavigation currentPage="/builder" />
@@ -43,20 +49,9 @@ export default function BuilderPage() {
         </div>
       </nav>
 
-      {/* Builder Content */}
-      <div className="py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white mb-4">
-              Landing Page Builder
-            </h1>
-            <p className="text-charcoal-300">
-              Customize your landing page design and preview how it will look to your visitors
-            </p>
-          </div>
-          
-          <LandingPageBuilder formData={formData} />
-        </div>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <LandingPageBuilder />
       </div>
     </div>
   )

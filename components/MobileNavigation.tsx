@@ -22,91 +22,107 @@ export default function MobileNavigation({ currentPage }: MobileNavigationProps)
 
   return (
     <>
-      {/* Mobile menu button */}
+      {/* Mobile Menu Button */}
       <button
-        onClick={toggleMenu}
-        className="lg:hidden p-3 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-700 transition-colors border border-charcoal-600 hover:border-charcoal-500"
-        aria-label="Toggle mobile menu"
+        onClick={() => setIsOpen(true)}
+        className="lg:hidden p-2 text-white hover:text-n60-100 transition-colors"
       >
         <Menu className="w-6 h-6" />
       </button>
 
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-              onClick={toggleMenu}
-            />
-            
-            {/* Menu panel */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-charcoal-800 shadow-2xl z-50 lg:hidden"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-charcoal-700 bg-charcoal-900">
-                <div className="flex items-center space-x-2">
-                  <Wand2 className="w-8 h-8 text-n60-500" />
-                  <span className="text-xl font-bold text-white">Formulate</span>
-                </div>
-                <button
-                  onClick={toggleMenu}
-                  className="p-2 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-700 transition-colors"
-                  aria-label="Close mobile menu"
-                >
-                  <X className="w-6 h-6" />
-                </button>
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/50 z-40 lg:hidden">
+          {/* Mobile Menu */}
+          <div className="fixed right-0 top-0 h-full w-80 bg-n60-800 shadow-2xl z-50 lg:hidden">
+            <div className="flex items-center justify-between p-6 border-b border-n60-700 bg-n60-800">
+              <div className="flex items-center space-x-2">
+                <Wand2 className="w-8 h-8 text-n60-500" />
+                <span className="text-xl font-bold text-white">Formulate</span>
               </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 text-white hover:text-n60-100 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
-              {/* Navigation items */}
-              <nav className="p-6 bg-charcoal-800 rounded-lg mx-4 mb-20 shadow-lg border border-charcoal-700">
-                <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-charcoal-400 uppercase tracking-wider mb-3">
-                    Navigation
-                  </h3>
-                </div>
-                <ul className="space-y-3">
-                  {navigationItems.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={toggleMenu}
-                        className={`block w-full px-6 py-4 rounded-xl text-base font-semibold transition-all duration-200 border-2 ${
-                          currentPage === item.href
-                            ? 'bg-n60-600 text-white border-n60-600 shadow-lg shadow-n60-600/25'
-                            : 'bg-charcoal-700 text-white border-charcoal-600 hover:bg-charcoal-600 hover:border-n60-500 hover:text-n60-300 hover:shadow-md'
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-
-              {/* Footer */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-charcoal-700 bg-charcoal-900">
+            {/* Navigation Links */}
+            <nav className="p-6 bg-n60-800 rounded-lg mx-4 mb-20 shadow-lg border border-n60-700">
+              <div className="space-y-4">
                 <Link
                   href="/"
-                  onClick={toggleMenu}
-                  className="block text-center w-full px-6 py-4 bg-n60-600 text-white font-semibold rounded-xl hover:bg-n60-700 transition-colors shadow-lg shadow-n60-600/25"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-lg transition-colors ${
+                    currentPage === '/' 
+                      ? 'bg-n60-700 text-white' 
+                      : 'text-charcoal-300 hover:bg-n60-700 hover:text-white'
+                  }`}
                 >
-                  Back to Home
+                  Home
+                </Link>
+                <Link
+                  href="/demo"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-lg transition-colors ${
+                    currentPage === '/demo' 
+                      ? 'bg-n60-700 text-white' 
+                      : 'text-charcoal-300 hover:bg-n60-700 hover:text-white'
+                  }`}
+                >
+                  Demo
+                </Link>
+                <Link
+                  href="/wizard"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-lg transition-colors ${
+                    currentPage === '/wizard' 
+                      ? 'bg-n60-700 text-white' 
+                      : 'text-charcoal-300 hover:bg-n60-700 hover:text-white'
+                  }`}
+                >
+                  Create Form
+                </Link>
+                <Link
+                  href="/builder"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-lg transition-colors ${
+                    currentPage === '/builder' 
+                      ? 'bg-n60-700 text-white' 
+                      : 'text-charcoal-300 hover:bg-n60-700 hover:text-white'
+                  }`}
+                >
+                  Landing Page Builder
+                </Link>
+                <Link
+                  href="/product-guide-demo"
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3 rounded-lg transition-colors ${
+                    currentPage === '/product-guide-demo' 
+                      ? 'bg-n60-700 text-white' 
+                      : 'text-charcoal-300 hover:bg-n60-700 hover:text-white'
+                  }`}
+                >
+                  Product Guide Demo
                 </Link>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </nav>
+
+            {/* Footer */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-n60-700 bg-n60-800">
+              <div className="text-center">
+                <p className="text-sm text-charcoal-400 mb-2">
+                  AI-Powered Form & Landing Page Creation
+                </p>
+                <p className="text-xs text-charcoal-500">
+                  © 2024 Formulate. All rights reserved.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
