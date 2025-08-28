@@ -83,7 +83,7 @@ export default function HomePage() {
           </div>
         </nav>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-3">
               AI-drevne landingssider

@@ -28,7 +28,7 @@ export default function ProductGuideChatbot({ userData, language }: ProductGuide
 
   const translations = {
     no: {
-      welcome: `Hei ${userData.name}! Jeg er din AI produktguide assistent. Jeg kan hjelpe deg med å forstå dine personlige anbefalinger, svare på spørsmål om implementering, eller gi deg ytterligere innsikt. Hva vil du vite?`,
+      welcome: `Hei ${userData.name}! Jeg er Botvik, din AI produktguide assistent. Jeg kan hjelpe deg med å forstå dine personlige anbefalinger, svare på spørsmål om implementering, eller gi deg ytterligere innsikt. Hva vil du vite?`,
       quickQuestions: 'Hurtigspørsmål:',
       keyDifferences: 'Hva er hovedforskjellene mellom anbefalingene?',
       implementationTime: 'Hvor lang tid tar implementering?',
@@ -47,7 +47,7 @@ export default function ProductGuideChatbot({ userData, language }: ProductGuide
       humanTakeoverSuccess: 'Hei! Jeg er Matthew Robinson, din personlige salgsekspert. Jeg kan hjelpe deg med å finne den perfekte løsningen for dine behov. Hva kan jeg hjelpe deg med i dag?',
       humanTakeoverNote: 'Du kan alltid be om AI-assistent igjen senere.',
       agentStatus: {
-        ai: 'AI Assistent',
+        ai: 'Botvik AI',
         human: 'Sales Agent'
       },
       differenceResponse: `Flott spørsmål! Her er hvordan de tre anbefalingene skiller seg ut:
@@ -152,11 +152,50 @@ Du kan spørre meg om:
 Hva vil du utforske nærmere?`
     },
     en: {
-      welcome: `Hi ${userData.name}! I'm your AI product guide assistant. I can help you understand your personalized recommendations, answer questions about implementation, or provide additional insights. What would you like to know?`,
+      title: 'Your Personalized Product Guide',
+      subtitle: 'Tailored for your business',
+      description: 'Get AI-powered recommendations and expert insights to increase sales of your products.',
+      downloadGuide: 'Download Guide',
+      shareGuide: 'Share Guide',
+      scheduleConsultation: 'Schedule Consultation',
+      heroTitle: 'Powerful AI Marketing for Norwegian SMBs',
+      heroSubtitle: 'Get customized AI tools and strategies to increase sales of your products and services.',
+      seeDemo: 'SEE DEMO',
+      readyToStart: 'Ready to Get Started?',
+      footerDescription: 'Your personalized guide is just the beginning. Let\'s turn these recommendations into reality.',
+      contactUs: 'Contact Us',
+      scheduleDemo: 'Schedule Demo',
+      contactInfo: 'hello@n60.ai',
+      header: {
+        title: 'n60.ai',
+        subtitle: 'AI-Powered Product Guide'
+      },
+      features: {
+        aiRecommendations: 'AI-powered recommendations',
+        interactiveGuide: 'Interactive e-reader guide',
+        aiAssistant: 'AI chatbot assistant'
+      },
+      cta: {
+        title: 'Ready to Implement Your Solution?',
+        description: 'Your personalized guide is just the beginning. Let\'s turn these recommendations into reality.',
+        schedule: 'Schedule Consultation',
+        download: 'Download Full Guide'
+      },
+      footer: {
+        description: 'AI-powered product guides and recommendations tailored for your business needs.',
+        quickLinks: 'Quick Links',
+        createGuide: 'Create New Guide',
+        browseTemplates: 'Browse Templates',
+        support: 'Support',
+        contact: 'Contact',
+        available: 'Available 24/7',
+        copyright: 'All rights reserved. This guide was generated on'
+      },
+      welcome: `Hi ${userData.name}! I'm Botvik, your AI product guide assistant. I can help you understand your personal recommendations, answer questions about implementation, or give you additional insights. What would you like to know?`,
       quickQuestions: 'Quick Questions:',
-      keyDifferences: 'What are the key differences between the recommendations?',
+      keyDifferences: 'What are the main differences between the recommendations?',
       implementationTime: 'How long does implementation take?',
-      expectedROI: 'What\'s the expected ROI?',
+      expectedROI: 'What is the expected ROI?',
       costBreakdown: 'Can you explain the cost breakdown?',
       trainingRequired: 'What training is required?',
       howToStart: 'How do I get started?',
@@ -171,7 +210,7 @@ Hva vil du utforske nærmere?`
       humanTakeoverSuccess: 'Hi! I\'m Matthew Robinson, your personal sales expert. I can help you find the perfect solution for your needs. What can I help you with today?',
       humanTakeoverNote: 'You can always request the AI assistant again later.',
       agentStatus: {
-        ai: 'AI Assistant',
+        ai: 'Botvik AI',
         human: 'Sales Agent'
       },
       differenceResponse: `Great question! Here's how the three recommendations differ:
@@ -587,13 +626,13 @@ Vil du at jeg skal sette opp en konsultasjon for å diskutere implementeringspla
                   {message.type === 'user' ? (
                     <User className="w-4 h-4" />
                   ) : message.type === 'human' ? (
-                    <Crown className="w-4 h-4" />
-                  ) : (
                     <img 
                       src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
-                      alt="Matthew Robinson Salesbot" 
+                      alt="Matthew Robinson Sales Agent" 
                       className="w-full h-full object-cover rounded-full"
                     />
+                  ) : (
+                    <Bot className="w-4 h-4" />
                   )}
                 </div>
                 <div className={`rounded-2xl px-4 py-3 ${
@@ -609,7 +648,7 @@ Vil du at jeg skal sette opp en konsultasjon for å diskutere implementeringspla
                         ? 'bg-yellow-200 text-yellow-800'
                         : 'bg-charcoal-200 text-charcoal-700'
                     }`}>
-                      {message.agent === 'Human' ? '👨‍💼 Ekspert' : '🤖 AI'}
+                      {message.agent === 'Human' ? '👨‍💼 Sales Agent' : '🤖 Botvik AI'}
                     </span>
                   </div>
                   <p className="text-sm leading-relaxed">{message.content}</p>
@@ -638,13 +677,13 @@ Vil du at jeg skal sette opp en konsultasjon for å diskutere implementeringspla
                   : 'bg-charcoal-100 text-charcoal-600'
               }`}>
                 {currentAgent === 'Human' ? (
-                  <Crown className="w-4 h-4" />
-                ) : (
                   <img 
                     src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
-                    alt="Matthew Robinson Salesbot" 
+                    alt="Matthew Robinson Sales Agent" 
                     className="w-full h-full object-cover rounded-full"
                   />
+                ) : (
+                  <Bot className="w-4 h-4" />
                 )}
               </div>
               <div className={`rounded-2xl px-4 py-3 ${
