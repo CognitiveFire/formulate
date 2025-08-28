@@ -40,15 +40,15 @@ export default function ProductGuideChatbot({ userData, language }: ProductGuide
       readyToHelp: 'Klar til å hjelpe med dine spørsmål',
       askAnything: 'Spør meg om alt om din produktguide...',
       canHelpWith: 'Jeg kan hjelpe med produkt sammenligninger, implementering, kostnader, trening og å komme i gang',
-      humanTakeover: 'Be om menneskelig assistent',
+      humanTakeover: 'Sales Agent',
       humanTakeoverPrompt: 'Vil du at en menneskelig ekspert skal ta over?',
       humanTakeoverConfirm: 'Ja, ta over',
       humanTakeoverCancel: 'Nei, fortsett med AI',
-      humanTakeoverSuccess: 'En menneskelig ekspert tar nå over samtalen!',
+      humanTakeoverSuccess: 'Hei! Jeg er Matthew Robinson, din personlige salgsekspert. Jeg kan hjelpe deg med å finne den perfekte løsningen for dine behov. Hva kan jeg hjelpe deg med i dag?',
       humanTakeoverNote: 'Du kan alltid be om AI-assistent igjen senere.',
       agentStatus: {
         ai: 'AI Assistent',
-        human: 'Menneskelig Ekspert'
+        human: 'Sales Agent'
       },
       differenceResponse: `Flott spørsmål! Her er hvordan de tre anbefalingene skiller seg ut:
 
@@ -164,15 +164,15 @@ Hva vil du utforske nærmere?`
       readyToHelp: 'Ready to help with your questions',
       askAnything: 'Ask me anything about your product guide...',
       canHelpWith: 'I can help with product comparisons, implementation, costs, training, and getting started',
-      humanTakeover: 'Request human assistant',
+      humanTakeover: 'Sales Agent',
       humanTakeoverPrompt: 'Would you like a human expert to take over?',
       humanTakeoverConfirm: 'Yes, take over',
       humanTakeoverCancel: 'No, continue with AI',
-      humanTakeoverSuccess: 'A human expert is now taking over the conversation!',
+      humanTakeoverSuccess: 'Hi! I\'m Matthew Robinson, your personal sales expert. I can help you find the perfect solution for your needs. What can I help you with today?',
       humanTakeoverNote: 'You can always request the AI assistant again later.',
       agentStatus: {
         ai: 'AI Assistant',
-        human: 'Human Expert'
+        human: 'Sales Agent'
       },
       differenceResponse: `Great question! Here's how the three recommendations differ:
 

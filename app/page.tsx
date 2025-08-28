@@ -57,7 +57,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
       {/* Hero Section */}
-      <div className="min-h-screen bg-gradient-to-br from-n60-800 via-n60-700 to-n60-900 text-white">
+      <div className="min-h-[80vh] bg-gradient-to-br from-n60-800 via-n60-700 to-n60-900 text-white">
         <nav className="bg-n60-800/90 backdrop-blur-md border-b border-n60-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
@@ -83,7 +83,7 @@ export default function HomePage() {
           </div>
         </nav>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-3">
               AI-drevne landingssider
