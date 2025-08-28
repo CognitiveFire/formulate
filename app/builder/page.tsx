@@ -8,21 +8,6 @@ import LandingPageBuilder from '@/components/LandingPageBuilder'
 import MobileNavigation from '@/components/MobileNavigation'
 
 export default function BuilderPage() {
-  const [formData, setFormData] = useState(null)
-
-  useEffect(() => {
-    // Get form data from URL params
-    const urlParams = new URLSearchParams(window.location.search)
-    const formDataParam = urlParams.get('formData')
-    if (formDataParam) {
-      try {
-        setFormData(JSON.parse(decodeURIComponent(formDataParam)))
-      } catch (error) {
-        console.error('Error parsing form data:', error)
-      }
-    }
-  }, [])
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
       {/* Navigation */}
@@ -51,7 +36,7 @@ export default function BuilderPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <LandingPageBuilder />
+        <LandingPageBuilder formData={null} />
       </div>
     </div>
   )
