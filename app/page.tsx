@@ -57,8 +57,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-50 via-white to-charcoal-50">
       {/* Hero Section */}
-      <div className="min-h-[80vh] bg-gradient-to-br from-n60-800 via-n60-700 to-n60-900 text-white">
-        <nav className="bg-n60-800/90 backdrop-blur-md border-b border-n60-700">
+      <div className="min-h-[80vh] bg-gradient-to-br from-n60-800 via-n60-700 to-n60-900 text-white flex flex-col">
+        <nav className="bg-n60-800/90 backdrop-blur-md border-b border-n60-700 flex-shrink-0">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-3">
@@ -83,28 +83,30 @@ export default function HomePage() {
           </div>
         </nav>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-3">
-              AI-drevne landingssider
-            </h1>
-            <p className="text-xl md:text-2xl text-n60-100 mb-4 max-w-3xl mx-auto">
-              Opprett imponerende, konverteringsoptimaliserte landingssider på minutter med vår AI-drevne plattform
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/builder"
-                className="bg-[#2887fd] text-white hover:bg-[#1d6fd8] font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
-              >
-                <span>Start å bygge</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link 
-                href="/demo"
-                className="border-2 border-white text-white hover:bg-white hover:text-n60-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200"
-              >
-                Se demo
-              </Link>
+        <div className="flex-1 flex items-center justify-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-6xl font-bold mb-3">
+                AI-drevne landingssider
+              </h1>
+              <p className="text-xl md:text-2xl text-n60-100 mb-4 max-w-3xl mx-auto">
+                Opprett imponerende, konverteringsoptimaliserte landingssider på minutter med vår AI-drevne plattform
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link 
+                  href="/builder"
+                  className="bg-[#2887fd] text-white hover:bg-[#1d6fd8] font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+                >
+                  <span>Start å bygge</span>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link 
+                  href="/demo"
+                  className="border-2 border-white text-white hover:bg-white hover:text-n60-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors duration-200"
+                >
+                  Se demo
+                </Link>
+              </div>
             </div>
           </div>
         </div>
