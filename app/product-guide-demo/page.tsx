@@ -249,7 +249,7 @@ export default function ProductGuideDemoPage() {
                   name="companySize"
                   value={formData.companySize}
                   onChange={(e) => updateFormData('companySize', e.target.value)}
-                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors"
+                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors bg-white text-charcoal-700"
                   required
                 >
                   <option value="">Velg bedriftsstørrelse</option>
@@ -276,7 +276,7 @@ export default function ProductGuideDemoPage() {
                   name="budget"
                   value={formData.budget}
                   onChange={(e) => updateFormData('budget', e.target.value)}
-                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors"
+                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors bg-white text-charcoal-700"
                   required
                 >
                   <option value="">Velg budsjett</option>
@@ -303,7 +303,7 @@ export default function ProductGuideDemoPage() {
                   name="timeline"
                   value={formData.timeline}
                   onChange={(e) => updateFormData('timeline', e.target.value)}
-                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors"
+                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors bg-white text-charcoal-700"
                   required
                 >
                   <option value="">Velg tidsramme</option>
