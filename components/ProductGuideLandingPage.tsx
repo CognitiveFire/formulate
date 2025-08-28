@@ -33,7 +33,16 @@ export default function ProductGuideLandingPage({ userData }: ProductGuideLandin
       subtitle: 'Skreddersyd for din virksomhet',
       description: 'Få AI-drevne anbefalinger og ekspertinnsikt for å øke salget av dine produkter.',
       downloadGuide: 'Last Ned Guide',
+      shareGuide: 'Del Guide',
       scheduleConsultation: 'Planlegg Konsultasjon',
+      heroTitle: 'Kraftig AI-markedsføring for norske SMB',
+      heroSubtitle: 'Få skreddersydde AI-verktøy og strategier for å øke salget av dine produkter og tjenester.',
+      seeDemo: 'SE DEMOEN',
+      readyToStart: 'Klar til å Komme i Gang?',
+      footerDescription: 'Din personlige guide er bare begynnelsen. La oss gjøre disse anbefalingene til virkelighet.',
+      contactUs: 'Kontakt Oss',
+      scheduleDemo: 'Planlegg Demo',
+      contactInfo: 'hello@n60.ai',
       header: {
         title: 'n60.ai',
         subtitle: 'AI-Drevet Produktguide'
@@ -65,7 +74,16 @@ export default function ProductGuideLandingPage({ userData }: ProductGuideLandin
       subtitle: 'Tailored for your business',
       description: 'Get AI-powered recommendations and expert insights to increase sales of your products.',
       downloadGuide: 'Download Guide',
+      shareGuide: 'Share Guide',
       scheduleConsultation: 'Schedule Consultation',
+      heroTitle: 'Powerful AI Marketing for Norwegian SMBs',
+      heroSubtitle: 'Get customized AI tools and strategies to increase sales of your products and services.',
+      seeDemo: 'SEE DEMO',
+      readyToStart: 'Ready to Get Started?',
+      footerDescription: 'Your personalized guide is just the beginning. Let\'s turn these recommendations into reality.',
+      contactUs: 'Contact Us',
+      scheduleDemo: 'Schedule Demo',
+      contactInfo: 'hello@n60.ai',
       header: {
         title: 'n60.ai',
         subtitle: 'AI-Powered Product Guide'
