@@ -392,47 +392,59 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
           <div>
             <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.costAnalysis}</h2>
             <div className="bg-gradient-to-r from-charcoal-50 to-charcoal-50 rounded-xl p-8 border border-charcoal-200">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
                 {/* Left Column - Cost Breakdown */}
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-lg font-semibold text-charcoal-900 mb-4">{t.costBreakdown}</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-charcoal-700 text-sm">{t.softwareCosts}:</span>
-                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-2">{content.costAnalysis.softwareCosts}</span>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
+                      <span className="text-charcoal-700 text-sm font-medium">{t.softwareCosts}:</span>
+                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-4">{content.costAnalysis.softwareCosts}</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-charcoal-700 text-sm">{t.implementationCosts}:</span>
-                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-2 max-w-[200px]">{content.costAnalysis.implementationCosts}</span>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
+                      <span className="text-charcoal-700 text-sm font-medium">{t.implementationCosts}:</span>
+                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-4 max-w-[250px]">{content.costAnalysis.implementationCosts}</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-charcoal-700 text-sm">{t.trainingCosts}:</span>
-                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-2">{content.costAnalysis.trainingCosts}</span>
+                    <div className="flex justify-between items-center p-3 bg-white rounded-lg border border-charcoal-200">
+                      <span className="text-charcoal-700 text-sm font-medium">{t.trainingCosts}:</span>
+                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-4">{content.costAnalysis.trainingCosts}</span>
                     </div>
-                    <div className="border-t border-charcoal-300 pt-3 mt-3">
-                      <div className="flex justify-between items-center">
+                    <div className="border-t border-charcoal-300 pt-4 mt-4">
+                      <div className="flex justify-between items-center p-3 bg-n60-50 rounded-lg border border-n60-200">
                         <span className="font-semibold text-charcoal-900 text-sm">{t.totalFirstYear}:</span>
-                        <span className="font-bold text-n60-800 text-sm text-right ml-2">{content.costAnalysis.totalFirstYear}</span>
+                        <span className="font-bold text-n60-800 text-sm text-right ml-4">{content.costAnalysis.totalFirstYear}</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 {/* Right Column - Expected Returns */}
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-lg font-semibold text-charcoal-900 mb-4">{t.expectedReturns}</h3>
-                  <div className="space-y-4">
-                    <div className="text-center p-4 bg-n60-800 text-white rounded-lg border border-charcoal-200">
-                      <div className="text-2xl font-bold text-white mb-2">ROI</div>
+                  <div className="space-y-6">
+                    <div className="text-center p-6 bg-n60-800 text-white rounded-lg border border-charcoal-200 shadow-lg">
+                      <div className="text-3xl font-bold text-white mb-3">ROI</div>
                       <div className="text-sm text-n60-100">{content.costAnalysis.roi}</div>
                     </div>
-                    <div className="text-sm text-charcoal-700">
-                      <p className="mb-2">Basert på din virksomhetsstørrelse og bruksområde kan du forvente:</p>
-                      <ul className="space-y-1">
-                        <li>• {t.efficiencyImprovement}</li>
-                        <li>• {t.timeSavings}</li>
-                        <li>• {t.betterDecisions}</li>
-                        <li>• {t.teamCollaboration}</li>
+                    <div className="text-sm text-charcoal-700 bg-white p-4 rounded-lg border border-charcoal-200">
+                      <p className="mb-3 font-medium">Basert på din virksomhetsstørrelse og bruksområde kan du forvente:</p>
+                      <ul className="space-y-2">
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
+                          {t.efficiencyImprovement}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
+                          {t.timeSavings}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
+                          {t.betterDecisions}
+                        </li>
+                        <li className="flex items-center">
+                          <span className="w-2 h-2 bg-n60-600 rounded-full mr-3"></span>
+                          {t.teamCollaboration}
+                        </li>
                       </ul>
                     </div>
                   </div>
