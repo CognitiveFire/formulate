@@ -2,13 +2,14 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bot, User, Send, ArrowRight } from 'lucide-react'
+import { Bot, User, Send, ArrowRight, MessageCircle, Crown } from 'lucide-react'
 
 interface Message {
   id: string
-  type: 'user' | 'assistant'
+  type: 'user' | 'assistant' | 'human'
   content: string
   timestamp: Date
+  agent?: 'AI' | 'Human'
 }
 
 interface ProductGuideChatbotProps {
@@ -20,6 +21,8 @@ export default function ProductGuideChatbot({ userData, language }: ProductGuide
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [currentAgent, setCurrentAgent] = useState<'AI' | 'Human'>('AI')
+  const [showTakeoverPrompt, setShowTakeoverPrompt] = useState(false)
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
@@ -37,6 +40,16 @@ export default function ProductGuideChatbot({ userData, language }: ProductGuide
       readyToHelp: 'Klar til å hjelpe med dine spørsmål',
       askAnything: 'Spør meg om alt om din produktguide...',
       canHelpWith: 'Jeg kan hjelpe med produkt sammenligninger, implementering, kostnader, trening og å komme i gang',
+      humanTakeover: 'Be om menneskelig assistent',
+      humanTakeoverPrompt: 'Vil du at en menneskelig ekspert skal ta over?',
+      humanTakeoverConfirm: 'Ja, ta over',
+      humanTakeoverCancel: 'Nei, fortsett med AI',
+      humanTakeoverSuccess: 'En menneskelig ekspert tar nå over samtalen!',
+      humanTakeoverNote: 'Du kan alltid be om AI-assistent igjen senere.',
+      agentStatus: {
+        ai: 'AI Assistent',
+        human: 'Menneskelig Ekspert'
+      },
       differenceResponse: `Flott spørsmål! Her er hvordan de tre anbefalingene skiller seg ut:
 
 **AI Marketing Suite Pro (kr 45,000/mnd)** - Best for etablerte virksomheter som trenger enterprise-grade funksjoner. Tilbyr avansert analyse, tilpassede integrasjoner og 24/7 støtte.
@@ -151,6 +164,16 @@ Hva vil du utforske nærmere?`
       readyToHelp: 'Ready to help with your questions',
       askAnything: 'Ask me anything about your product guide...',
       canHelpWith: 'I can help with product comparisons, implementation, costs, training, and getting started',
+      humanTakeover: 'Request human assistant',
+      humanTakeoverPrompt: 'Would you like a human expert to take over?',
+      humanTakeoverConfirm: 'Yes, take over',
+      humanTakeoverCancel: 'No, continue with AI',
+      humanTakeoverSuccess: 'A human expert is now taking over the conversation!',
+      humanTakeoverNote: 'You can always request the AI assistant again later.',
+      agentStatus: {
+        ai: 'AI Assistant',
+        human: 'Human Expert'
+      },
       differenceResponse: `Great question! Here's how the three recommendations differ:
 
 **AI Marketing Suite Pro (kr 45,000/mnd)** - Best for established companies needing enterprise-grade features. Offers advanced analytics, custom integrations, and 24/7 support.
@@ -256,27 +279,6 @@ What would you like to explore further?`
 
   const t = translations[language]
 
-  // Initialize with welcome message
-  useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([{
-        id: '1',
-        type: 'assistant',
-        content: t.welcome,
-        timestamp: new Date()
-      }])
-    }
-  }, [language, messages.length, t.welcome])
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  useEffect(() => {
-    scrollToBottom()
-  }, [messages])
-
-  // Pre-defined quick questions
   const quickQuestions = [
     t.keyDifferences,
     t.implementationTime,
@@ -286,45 +288,26 @@ What would you like to explore further?`
     t.howToStart
   ]
 
-  // AI response generator based on user data and question
-  const generateAIResponse = async (question: string) => {
-    setIsTyping(true)
-    
-    // Simulate AI processing time
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000))
-    
-    let response = ''
-    const questionLower = question.toLowerCase()
-    
-    if (questionLower.includes('difference') || questionLower.includes('compare') || questionLower.includes('forskjell')) {
-      response = t.differenceResponse
-    } else if (questionLower.includes('implementation') || questionLower.includes('time') || questionLower.includes('long') || questionLower.includes('implementering') || questionLower.includes('tid')) {
-      response = t.implementationResponse
-    } else if (questionLower.includes('roi') || questionLower.includes('return') || questionLower.includes('avkastning')) {
-      response = t.roiResponse
-    } else if (questionLower.includes('cost') || questionLower.includes('pricing') || questionLower.includes('breakdown') || questionLower.includes('kostnad') || questionLower.includes('prising')) {
-      response = t.costResponse
-    } else if (questionLower.includes('training') || questionLower.includes('learn') || questionLower.includes('trening') || questionLower.includes('lære')) {
-      response = t.trainingResponse
-    } else if (questionLower.includes('start') || questionLower.includes('begin') || questionLower.includes('next') || questionLower.includes('starte') || questionLower.includes('begynne')) {
-      response = t.startResponse
-    } else {
-      response = t.defaultResponse
+  useEffect(() => {
+    if (messages.length === 0) {
+      const welcomeMessage: Message = {
+        id: '1',
+        type: 'assistant',
+        content: t.welcome,
+        timestamp: new Date(),
+        agent: 'AI'
+      }
+      setMessages([welcomeMessage])
     }
-    
-    const newMessage: Message = {
-      id: Date.now().toString(),
-      type: 'assistant',
-      content: response,
-      timestamp: new Date()
+  }, [])
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
     }
-    
-    setMessages(prev => [...prev, newMessage])
-    setIsTyping(false)
-  }
+  }, [messages])
 
   const handleQuickQuestion = (question: string) => {
-    // Add the question to the chat immediately
     const userMessage: Message = {
       id: Date.now().toString(),
       type: 'user',
@@ -333,34 +316,56 @@ What would you like to explore further?`
     }
     
     setMessages(prev => [...prev, userMessage])
+    setInputValue('')
     
     // Generate AI response
-    generateAIResponse(question)
-    
-    // Scroll to bottom of chat after a brief delay to ensure messages are rendered
     setTimeout(() => {
-      if (chatContainerRef.current) {
-        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+      const aiResponse = generateAIResponse(question)
+      const aiMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'assistant',
+        content: aiResponse,
+        timestamp: new Date(),
+        agent: currentAgent
       }
-    }, 100)
+      setMessages(prev => [...prev, aiMessage])
+    }, 1000)
   }
 
   const handleSendMessage = async (messageText?: string) => {
-    const textToSend = messageText || inputValue
-    if (!textToSend.trim()) return
-    
+    const text = messageText || inputValue.trim()
+    if (!text) return
+
     const userMessage: Message = {
       id: Date.now().toString(),
       type: 'user',
-      content: textToSend,
+      content: text,
       timestamp: new Date()
     }
     
     setMessages(prev => [...prev, userMessage])
     setInputValue('')
+    setIsTyping(true)
     
-    // Generate AI response
-    await generateAIResponse(textToSend)
+    // Generate response based on current agent
+    setTimeout(() => {
+      let response: string
+      if (currentAgent === 'AI') {
+        response = generateAIResponse(text)
+      } else {
+        response = generateHumanResponse(text)
+      }
+      
+      const responseMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: currentAgent === 'AI' ? 'assistant' : 'human',
+        content: response,
+        timestamp: new Date(),
+        agent: currentAgent
+      }
+      setMessages(prev => [...prev, responseMessage])
+      setIsTyping(false)
+    }, 1000)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -370,29 +375,132 @@ What would you like to explore further?`
     }
   }
 
+  const generateAIResponse = (question: string): string => {
+    const lowerQuestion = question.toLowerCase()
+    
+    if (lowerQuestion.includes('forskjell') || lowerQuestion.includes('difference')) {
+      return t.differenceResponse
+    } else if (lowerQuestion.includes('tid') || lowerQuestion.includes('time') || lowerQuestion.includes('implementering')) {
+      return t.implementationResponse
+    } else if (lowerQuestion.includes('roi') || lowerQuestion.includes('avkastning')) {
+      return t.roiResponse
+    } else if (lowerQuestion.includes('kostnad') || lowerQuestion.includes('cost')) {
+      return t.costResponse
+    } else if (lowerQuestion.includes('trening') || lowerQuestion.includes('training')) {
+      return t.trainingResponse
+    } else if (lowerQuestion.includes('start') || lowerQuestion.includes('begynne')) {
+      return `For å komme i gang med implementering av din valgte løsning, anbefaler jeg følgende steg:
+
+1. **Vurdering (Uke 1):** Vi analyserer dine behov og setter opp en detaljert implementeringsplan
+2. **Oppsett (Uke 2-3):** Teknisk konfigurering og integrasjon med eksisterende systemer
+3. **Trening (Uke 4):** Omfattende trening for ditt team på alle funksjoner
+4. **Lansering (Uke 5):** Full implementering og overgang til nytt system
+5. **Støtte (Uke 6+):** Løpende støtte og optimalisering
+
+Vil du at jeg skal sette opp en konsultasjon for å diskutere implementeringsplanen din?`
+    } else {
+      return `Takk for spørsmålet ditt! Jeg kan hjelpe deg med å forstå dine anbefalinger, implementering, kostnader og trening. Kan du være mer spesifikk om hva du vil vite?`
+    }
+  }
+
+  const generateHumanResponse = (question: string): string => {
+    return `Takk for spørsmålet ditt! Som menneskelig ekspert kan jeg gi deg mer detaljerte og personlige svar. La meg hjelpe deg med det.`
+  }
+
+  const handleHumanTakeover = () => {
+    setShowTakeoverPrompt(true)
+  }
+
+  const confirmHumanTakeover = () => {
+    setCurrentAgent('Human')
+    setShowTakeoverPrompt(false)
+    
+    const takeoverMessage: Message = {
+      id: Date.now().toString(),
+      type: 'human',
+      content: t.humanTakeoverSuccess,
+      timestamp: new Date(),
+      agent: 'Human'
+    }
+    
+    setMessages(prev => [...prev, takeoverMessage])
+  }
+
+  const cancelHumanTakeover = () => {
+    setShowTakeoverPrompt(false)
+  }
+
+  const switchBackToAI = () => {
+    setCurrentAgent('AI')
+    
+    const switchMessage: Message = {
+      id: Date.now().toString(),
+      type: 'assistant',
+      content: 'Jeg er tilbake som din AI-assistent! Hvordan kan jeg hjelpe deg videre?',
+      timestamp: new Date(),
+      agent: 'AI'
+    }
+    
+    setMessages(prev => [...prev, switchMessage])
+  }
+
   return (
-    <div className="bg-white rounded-2xl shadow-2xl border border-charcoal-200 h-full flex flex-col">
-      {/* Chatbot Header */}
-      <div className="bg-gradient-to-r from-n60-800 to-n60-700 text-white px-6 py-4 rounded-t-2xl">
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
-            <img 
-              src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
-              alt="Matthew Robinson Salesbot" 
-              className="w-full h-full object-cover rounded-full"
-            />
+    <div className="flex flex-col h-[700px] bg-white border border-charcoal-200 rounded-2xl shadow-lg overflow-hidden">
+      {/* Header */}
+      <div className="p-4 bg-gradient-to-r from-n60-800 to-n60-700 text-white">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+              <MessageCircle className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-semibold">{t.aiAssistant}</h3>
+              <p className="text-sm text-n60-100">{t.readyToHelp}</p>
+            </div>
           </div>
-          <div className="flex-1">
-            <h3 className="font-semibold">{t.aiAssistant}</h3>
-            <p className="text-n60-100 text-sm">{t.readyToHelp}</p>
+          
+          {/* Agent Status Indicator */}
+          <div className="flex items-center space-x-3">
+            <div className={`flex items-center space-x-2 px-3 py-2 rounded-full ${
+              currentAgent === 'AI' 
+                ? 'bg-white/20 text-white' 
+                : 'bg-yellow-500/20 text-yellow-200'
+            }`}>
+              {currentAgent === 'AI' ? (
+                <>
+                  <Bot className="w-4 h-4" />
+                  <span className="text-xs font-medium">{t.agentStatus.ai}</span>
+                </>
+              ) : (
+                <>
+                  <Crown className="w-4 h-4" />
+                  <span className="text-xs font-medium">{t.agentStatus.human}</span>
+                </>
+              )}
+            </div>
+            
+            {/* Human Takeover Button */}
+            {currentAgent === 'AI' && (
+              <button
+                onClick={handleHumanTakeover}
+                className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-n60-800 font-medium rounded-full transition-colors flex items-center space-x-2"
+              >
+                <User className="w-4 h-4" />
+                <span className="text-sm">{t.humanTakeover}</span>
+              </button>
+            )}
+            
+            {/* Switch Back to AI Button */}
+            {currentAgent === 'Human' && (
+              <button
+                onClick={switchBackToAI}
+                className="px-4 py-2 bg-n60-600 hover:bg-n60-700 text-white font-medium rounded-full transition-colors flex items-center space-x-2"
+              >
+                <Bot className="w-4 h-4" />
+                <span className="text-sm">Tilbake til AI</span>
+              </button>
+            )}
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-secondary-400 rounded-full animate-pulse"></div>
-            <span className="text-xs text-n60-100">Hybrid AI</span>
-          </div>
-        </div>
-        <div className="mt-2 text-xs text-n60-100">
-          💬 AI-assistent med mulighet for salgsperson overtagelse
         </div>
       </div>
 
@@ -400,10 +508,6 @@ What would you like to explore further?`
       <div className="p-4 bg-charcoal-50 border-b border-charcoal-200">
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm font-medium text-charcoal-700">{t.quickQuestions}</p>
-          <button className="px-3 py-1 bg-secondary-500 text-white text-xs rounded-full hover:bg-secondary-600 transition-colors flex items-center space-x-1">
-            <User className="w-3 h-3" />
-            <span>Salgsperson</span>
-          </button>
         </div>
         <div className="flex flex-wrap gap-2">
           {quickQuestions.map((question, index) => (
@@ -417,6 +521,49 @@ What would you like to explore further?`
           ))}
         </div>
       </div>
+
+      {/* Human Takeover Prompt Modal */}
+      <AnimatePresence>
+        {showTakeoverPrompt && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-black/50 flex items-center justify-center z-50"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-2xl p-6 max-w-md mx-4 text-center"
+            >
+              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Crown className="w-8 h-8 text-yellow-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-charcoal-800 mb-2">
+                {t.humanTakeoverPrompt}
+              </h3>
+              <p className="text-charcoal-600 mb-6">
+                {t.humanTakeoverNote}
+              </p>
+              <div className="flex space-x-3">
+                <button
+                  onClick={confirmHumanTakeover}
+                  className="flex-1 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg transition-colors"
+                >
+                  {t.humanTakeoverConfirm}
+                </button>
+                <button
+                  onClick={cancelHumanTakeover}
+                  className="flex-1 px-4 py-2 bg-charcoal-200 hover:bg-charcoal-300 text-charcoal-700 font-medium rounded-lg transition-colors"
+                >
+                  {t.humanTakeoverCancel}
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Messages Container */}
       <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -433,10 +580,14 @@ What would you like to explore further?`
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                   message.type === 'user' 
                     ? 'bg-n60-800 text-white' 
+                    : message.type === 'human'
+                    ? 'bg-yellow-500 text-white'
                     : 'bg-charcoal-100 text-charcoal-600'
                 }`}>
                   {message.type === 'user' ? (
                     <User className="w-4 h-4" />
+                  ) : message.type === 'human' ? (
+                    <Crown className="w-4 h-4" />
                   ) : (
                     <img 
                       src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
@@ -448,8 +599,19 @@ What would you like to explore further?`
                 <div className={`rounded-2xl px-4 py-3 ${
                   message.type === 'user'
                     ? 'bg-n60-800 text-white'
+                    : message.type === 'human'
+                    ? 'bg-yellow-50 border border-yellow-200 text-yellow-800'
                     : 'bg-charcoal-100 text-charcoal-800'
                 }`}>
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className={`text-xs font-medium px-2 py-1 rounded-full ${
+                      message.type === 'human'
+                        ? 'bg-yellow-200 text-yellow-800'
+                        : 'bg-charcoal-200 text-charcoal-700'
+                    }`}>
+                      {message.agent === 'Human' ? '👨‍💼 Ekspert' : '🤖 AI'}
+                    </span>
+                  </div>
                   <p className="text-sm leading-relaxed">{message.content}</p>
                   <p className="text-xs opacity-70 mt-2">
                     {message.timestamp.toLocaleTimeString(language === 'no' ? 'no-NO' : 'en-US', { 
@@ -470,14 +632,26 @@ What would you like to explore further?`
             className="flex justify-start"
           >
             <div className="flex items-start space-x-3 max-w-[80%]">
-              <div className="w-8 h-8 bg-charcoal-100 text-charcoal-600 rounded-full flex items-center justify-center overflow-hidden">
-                <img 
-                  src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
-                  alt="Matthew Robinson Salesbot" 
-                  className="w-full h-full object-cover rounded-full"
-                />
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center overflow-hidden ${
+                currentAgent === 'Human' 
+                  ? 'bg-yellow-500 text-white' 
+                  : 'bg-charcoal-100 text-charcoal-600'
+              }`}>
+                {currentAgent === 'Human' ? (
+                  <Crown className="w-4 h-4" />
+                ) : (
+                  <img 
+                    src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
+                    alt="Matthew Robinson Salesbot" 
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                )}
               </div>
-              <div className="bg-charcoal-100 text-charcoal-800 rounded-2xl px-4 py-3">
+              <div className={`rounded-2xl px-4 py-3 ${
+                currentAgent === 'Human'
+                  ? 'bg-yellow-50 border border-yellow-200 text-yellow-800'
+                  : 'bg-charcoal-100 text-charcoal-800'
+              }`}>
                 <div className="flex space-x-1">
                   <div className="w-2 h-2 bg-charcoal-400 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-charcoal-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
