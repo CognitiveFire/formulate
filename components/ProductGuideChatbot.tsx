@@ -332,11 +332,18 @@ What would you like to explore further?`
   }
 
   const handleQuickQuestion = (question: string) => {
-    setInputValue(question)
-    // Automatically send the question after a brief delay to simulate user interaction
-    setTimeout(() => {
-      handleSendMessage(question)
-    }, 100)
+    // Add the question to the chat immediately
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      type: 'user',
+      content: question,
+      timestamp: new Date()
+    }
+    
+    setMessages(prev => [...prev, userMessage])
+    
+    // Generate AI response
+    generateAIResponse(question)
   }
 
   const handleSendMessage = async (messageText?: string) => {
@@ -369,8 +376,12 @@ What would you like to explore further?`
       {/* Chatbot Header */}
       <div className="bg-gradient-to-r from-n60-600 to-n60-700 text-white px-6 py-4 rounded-t-2xl">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-            <Bot className="w-5 h-5" />
+          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+            <img 
+              src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
+              alt="Matthew Robinson Salesbot" 
+              className="w-full h-full object-cover rounded-full"
+            />
           </div>
           <div>
             <h3 className="font-semibold">{t.aiAssistant}</h3>

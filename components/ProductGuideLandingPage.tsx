@@ -231,7 +231,7 @@ export default function ProductGuideLandingPage({ userData }: ProductGuideLandin
                   </p>
                 </div>
                 
-                <div className="p-6 h-[600px]">
+                <div className="p-6 h-[700px]">
                   <ProductGuideChatbot userData={userData} language={language} />
                 </div>
               </div>

@@ -408,8 +408,8 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.nextSteps}</h2>
             
-            {/* Next Steps List */}
-            <div className="space-y-4">
+            {/* Next Steps List - Single Column Layout */}
+            <div className="space-y-4 max-w-3xl mx-auto">
               {content.nextSteps.map((step, index) => (
                 <div key={index} className="bg-white border border-charcoal-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-200">
                   <div className="flex items-start space-x-4">
@@ -426,10 +426,10 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
             </div>
             
             {/* CTA Section */}
-            <div className="mt-8">
-              <div className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-xl text-white p-6 text-center">
+            <div className="mt-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-xl text-white p-6 text-center shadow-lg">
                 <h3 className="text-xl font-semibold mb-3">{t.readyToImplement}</h3>
-                <p className="text-n60-100 mb-4 text-sm leading-relaxed max-w-2xl mx-auto">
+                <p className="text-n60-100 mb-4 text-sm leading-relaxed">
                   {t.implementationDescription}
                 </p>
                 <button className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg">
