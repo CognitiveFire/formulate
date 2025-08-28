@@ -231,29 +231,29 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
           <div className="text-center">
             <div className="mb-8">
               <BookOpen className="w-16 h-16 text-n60-500 mx-auto mb-4" />
-              <h1 className="text-3xl font-bold text-charcoal-900 mb-2">{content.title}</h1>
+              <h1 className="text-3xl font-bold text-n60-800 mb-2">{content.title}</h1>
               <p className="text-xl text-charcoal-600 mb-4">{content.subtitle}</p>
               <p className="text-charcoal-700 max-w-2xl mx-auto">{content.executiveSummary}</p>
             </div>
             
             <div className="bg-gradient-to-r from-n60-50 to-charcoal-50 rounded-xl p-6 border border-n60-200 shadow-sm">
-              <h2 className="text-xl font-semibold text-charcoal-900 mb-4">{t.profileSummary}</h2>
+              <h2 className="text-xl font-semibold text-n60-800 mb-4">{t.profileSummary}</h2>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
                   <span className="font-medium text-charcoal-700">{t.company}:</span>
-                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.company}</span>
+                  <span className="ml-2 text-n60-800 font-semibold">{userData.company}</span>
                 </div>
                 <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
                   <span className="font-medium text-charcoal-700">{t.size}:</span>
-                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.companySize}</span>
+                  <span className="ml-2 text-n60-800 font-semibold">{userData.companySize}</span>
                 </div>
                 <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
                   <span className="font-medium text-charcoal-700">{t.focus}:</span>
-                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.useCase}</span>
+                  <span className="ml-2 text-n60-800 font-semibold">{userData.useCase}</span>
                 </div>
                 <div className="text-left bg-white p-3 rounded-lg border border-charcoal-200">
                   <span className="font-medium text-charcoal-700">{t.budget}:</span>
-                  <span className="ml-2 text-charcoal-900 font-semibold">{userData.budget}</span>
+                  <span className="ml-2 text-n60-800 font-semibold">{userData.budget}</span>
                 </div>
               </div>
             </div>
@@ -354,7 +354,7 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
       case 3:
         return (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.nextSteps}</h2>
+            <h2 className="text-2xl font-bold text-n60-800 mb-6 text-center">{t.nextSteps}</h2>
             
             {/* Next Steps List - Single Column Layout */}
             <div className="space-y-4 max-w-2xl mx-auto">
@@ -389,50 +389,6 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
         )
 
       case 4:
-        return (
-          <div className="text-center">
-            <div className="mb-8">
-              <CheckCircle className="w-16 h-16 text-secondary-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-n60-800 mb-4">{t.guideComplete}</h2>
-              <p className="text-charcoal-600 max-w-2xl mx-auto">
-                {t.guideDescription}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-secondary-500 transition-colors">
-                <Download className="w-5 h-5 text-secondary-500" />
-                <span className="text-charcoal-700">{t.downloadPDF}</span>
-              </button>
-              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-secondary-500 transition-colors">
-                <Share2 className="w-5 h-5 text-secondary-500" />
-                <span className="text-charcoal-700">{t.shareGuide}</span>
-              </button>
-              <button 
-                onClick={() => setIsBookmarked(!isBookmarked)}
-                className={`flex items-center justify-center space-x-2 p-4 rounded-lg transition-colors ${
-                  isBookmarked 
-                    ? 'bg-secondary-100 border-secondary-500 text-secondary-700' 
-                    : 'bg-white border border-charcoal-200 text-charcoal-700 hover:border-secondary-500'
-                }`}
-              >
-                <Bookmark className={`w-5 h-5 ${isBookmarked ? 'text-secondary-600 fill-current' : 'text-secondary-500'}`} />
-                <span>{isBookmarked ? t.bookmarked : t.bookmark}</span>
-              </button>
-            </div>
-            
-            <div className="text-sm text-charcoal-500">
-              <p>{t.generatedOn} {new Date().toLocaleDateString(language === 'no' ? 'no-NO' : 'en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}</p>
-              <p>{t.validFor}</p>
-            </div>
-          </div>
-        )
-
-      case 5:
         return (
           <div>
             <h2 className="text-2xl font-bold text-n60-800 mb-6 text-center">{t.costAnalysis}</h2>
@@ -493,6 +449,50 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        )
+
+      case 5:
+        return (
+          <div className="text-center">
+            <div className="mb-8">
+              <CheckCircle className="w-16 h-16 text-secondary-500 mx-auto mb-4" />
+              <h2 className="text-2xl font-bold text-n60-800 mb-4">{t.guideComplete}</h2>
+              <p className="text-charcoal-600 max-w-2xl mx-auto">
+                {t.guideDescription}
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-secondary-500 transition-colors">
+                <Download className="w-5 h-5 text-secondary-500" />
+                <span className="text-charcoal-700">{t.downloadPDF}</span>
+              </button>
+              <button className="flex items-center justify-center space-x-2 p-4 bg-white border border-charcoal-200 rounded-lg hover:border-secondary-500 transition-colors">
+                <Share2 className="w-5 h-5 text-secondary-500" />
+                <span className="text-charcoal-700">{t.shareGuide}</span>
+              </button>
+              <button 
+                onClick={() => setIsBookmarked(!isBookmarked)}
+                className={`flex items-center justify-center space-x-2 p-4 rounded-lg transition-colors ${
+                  isBookmarked 
+                    ? 'bg-secondary-100 border-secondary-500 text-secondary-700' 
+                    : 'bg-white border border-charcoal-200 text-charcoal-700 hover:border-secondary-500'
+                }`}
+              >
+                <Bookmark className={`w-5 h-5 ${isBookmarked ? 'text-secondary-600 fill-current' : 'text-secondary-500'}`} />
+                <span>{isBookmarked ? t.bookmarked : t.bookmark}</span>
+              </button>
+            </div>
+            
+            <div className="text-sm text-charcoal-500">
+              <p>{t.generatedOn} {new Date().toLocaleDateString(language === 'no' ? 'no-NO' : 'en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}</p>
+              <p>{t.validFor}</p>
             </div>
           </div>
         )
