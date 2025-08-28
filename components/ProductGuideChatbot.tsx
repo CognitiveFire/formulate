@@ -383,16 +383,29 @@ What would you like to explore further?`
               className="w-full h-full object-cover rounded-full"
             />
           </div>
-          <div>
+          <div className="flex-1">
             <h3 className="font-semibold">{t.aiAssistant}</h3>
             <p className="text-n60-100 text-sm">{t.readyToHelp}</p>
           </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span className="text-xs text-n60-100">Hybrid AI</span>
+          </div>
+        </div>
+        <div className="mt-2 text-xs text-n60-100">
+          💬 AI-assistent med mulighet for salgsperson overtagelse
         </div>
       </div>
 
       {/* Quick Questions */}
       <div className="p-4 bg-charcoal-50 border-b border-charcoal-200">
-        <p className="text-sm font-medium text-charcoal-700 mb-3">{t.quickQuestions}</p>
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-sm font-medium text-charcoal-700">{t.quickQuestions}</p>
+          <button className="px-3 py-1 bg-n60-600 text-white text-xs rounded-full hover:bg-n60-700 transition-colors flex items-center space-x-1">
+            <User className="w-3 h-3" />
+            <span>Salgsperson</span>
+          </button>
+        </div>
         <div className="flex flex-wrap gap-2">
           {quickQuestions.map((question, index) => (
             <button

@@ -300,18 +300,18 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
                       <ul className="space-y-1">
                         {rec.pros.map((pro, i) => (
                           <li key={i} className="flex items-center text-sm text-charcoal-700">
-                            <CheckCircle className="w-3 h-3 text-green-600 mr-2" />
+                            <div className="w-3 h-3 bg-green-600 rounded-full mr-2"></div>
                             {pro}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-medium text-red-700 mb-2">Ulemper</h4>
+                      <h4 className="font-medium text-n60-700 mb-2">Ulemper</h4>
                       <ul className="space-y-1">
                         {rec.cons.map((con, i) => (
                           <li key={i} className="flex items-center text-sm text-charcoal-700">
-                            <div className="w-3 h-3 bg-red-600 rounded-full mr-2"></div>
+                            <div className="w-3 h-3 bg-n60-600 rounded-full mr-2"></div>
                             {con}
                           </li>
                         ))}
@@ -355,36 +355,38 @@ export default function ProductGuide({ userData, language }: ProductGuideProps) 
           <div>
             <h2 className="text-2xl font-bold text-charcoal-900 mb-6 text-center">{t.costAnalysis}</h2>
             <div className="bg-gradient-to-r from-n60-50 to-charcoal-50 rounded-xl p-8 border border-n60-200">
-              <div className="grid grid-cols-2 gap-8">
-                <div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Left Column - Cost Breakdown */}
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-charcoal-900 mb-4">{t.costBreakdown}</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-charcoal-700">{t.softwareCosts}:</span>
-                      <span className="font-semibold text-charcoal-900">{content.costAnalysis.softwareCosts}</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-charcoal-700 text-sm">{t.softwareCosts}:</span>
+                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-2">{content.costAnalysis.softwareCosts}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-charcoal-700">{t.implementationCosts}:</span>
-                      <span className="font-semibold text-charcoal-900">{content.costAnalysis.implementationCosts}</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-charcoal-700 text-sm">{t.implementationCosts}:</span>
+                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-2 max-w-[200px]">{content.costAnalysis.implementationCosts}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-charcoal-700">{t.trainingCosts}:</span>
-                      <span className="font-semibold text-charcoal-900">{content.costAnalysis.trainingCosts}</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-charcoal-700 text-sm">{t.trainingCosts}:</span>
+                      <span className="font-semibold text-charcoal-900 text-sm text-right ml-2">{content.costAnalysis.trainingCosts}</span>
                     </div>
                     <div className="border-t border-charcoal-300 pt-3 mt-3">
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-charcoal-900">{t.totalFirstYear}:</span>
-                        <span className="font-bold text-n60-600">{content.costAnalysis.totalFirstYear}</span>
+                      <div className="flex justify-between items-center">
+                        <span className="font-semibold text-charcoal-900 text-sm">{t.totalFirstYear}:</span>
+                        <span className="font-bold text-n60-600 text-sm text-right ml-2">{content.costAnalysis.totalFirstYear}</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <div>
+                {/* Right Column - Expected Returns */}
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-charcoal-900 mb-4">{t.expectedReturns}</h3>
                   <div className="space-y-4">
                     <div className="text-center p-4 bg-white rounded-lg border border-charcoal-200">
-                      <div className="text-2xl font-bold text-green-600 mb-2">ROI</div>
+                      <div className="text-2xl font-bold text-n60-600 mb-2">ROI</div>
                       <div className="text-sm text-charcoal-600">{content.costAnalysis.roi}</div>
                     </div>
                     <div className="text-sm text-charcoal-700">
