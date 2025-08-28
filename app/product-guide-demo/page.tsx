@@ -183,6 +183,13 @@ export default function ProductGuideDemoPage() {
                     </label>
                   ))}
                 </div>
+                {/* Display selected product types */}
+                {formData.productType && (
+                  <div className="mt-3 p-3 bg-n60-50 border border-n60-200 rounded-lg">
+                    <p className="text-sm font-medium text-n60-800 mb-1">Valgte produkttyper:</p>
+                    <p className="text-sm text-charcoal-700">{formData.productType}</p>
+                  </div>
+                )}
               </div>
 
               {/* Use Case - Multiple Choice */}
@@ -209,6 +216,13 @@ export default function ProductGuideDemoPage() {
                     </label>
                   ))}
                 </div>
+                {/* Display selected use cases */}
+                {formData.useCase && (
+                  <div className="mt-3 p-3 bg-n60-50 border border-n60-200 rounded-lg">
+                    <p className="text-sm font-medium text-n60-800 mb-1">Valgte bruksområder:</p>
+                    <p className="text-sm text-charcoal-700">{formData.useCase}</p>
+                  </div>
+                )}
               </div>
 
               {/* Company Size */}
@@ -285,13 +299,13 @@ export default function ProductGuideDemoPage() {
       </section>
 
       {/* Features Preview */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-n60-800">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
               Hva Du Får
             </h2>
-            <p className="text-lg text-charcoal-300">
+            <p className="text-lg text-n60-100">
               Din personlige produktguide inkluderer alt du trenger for å ta informerte beslutninger
             </p>
           </div>
@@ -302,7 +316,7 @@ export default function ProductGuideDemoPage() {
                 <BookOpen className="w-8 h-8 text-n60-600" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Interaktiv Guide</h3>
-              <p className="text-charcoal-300">
+              <p className="text-n60-100">
                 Bla gjennom dine personlige anbefalinger i et e-leser stil grensesnitt med profesjonell formatering.
               </p>
             </div>
@@ -312,7 +326,7 @@ export default function ProductGuideDemoPage() {
                 <Bot className="w-8 h-8 text-n60-600" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">AI Assistent</h3>
-              <p className="text-charcoal-300">
+              <p className="text-n60-100">
                 Få øyeblikkelige svar på dine spørsmål med vår AI chatbot som forstår dine spesifikke behov.
               </p>
             </div>
@@ -322,8 +336,8 @@ export default function ProductGuideDemoPage() {
                 <TrendingUp className="w-8 h-8 text-n60-600" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Handlingsorienterte Innspill</h3>
-              <p className="text-charcoal-300">
-                Motta implementeringsveikart, kostnadsanalyse og ROI-prognoser skreddersyd for din virksomhet.
+              <p className="text-n60-100">
+                Få konkrete anbefalinger og neste steg basert på din virksomhetsstørrelse og mål.
               </p>
             </div>
           </div>
