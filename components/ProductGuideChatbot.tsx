@@ -435,7 +435,15 @@ What would you like to explore further?`
                     ? 'bg-n60-800 text-white' 
                     : 'bg-charcoal-100 text-charcoal-600'
                 }`}>
-                  {message.type === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                  {message.type === 'user' ? (
+                    <User className="w-4 h-4" />
+                  ) : (
+                    <img 
+                      src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
+                      alt="Matthew Robinson Salesbot" 
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  )}
                 </div>
                 <div className={`rounded-2xl px-4 py-3 ${
                   message.type === 'user'
@@ -462,8 +470,12 @@ What would you like to explore further?`
             className="flex justify-start"
           >
             <div className="flex items-start space-x-3 max-w-[80%]">
-              <div className="w-8 h-8 bg-charcoal-100 text-charcoal-600 rounded-full flex items-center justify-center">
-                <Bot className="w-4 h-4" />
+              <div className="w-8 h-8 bg-charcoal-100 text-charcoal-600 rounded-full flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://i.ibb.co/yn9WGQBT/salesbot.png" 
+                  alt="Matthew Robinson Salesbot" 
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
               <div className="bg-charcoal-100 text-charcoal-800 rounded-2xl px-4 py-3">
                 <div className="flex space-x-1">
