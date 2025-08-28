@@ -1,86 +1,199 @@
 {
-  "contentType": "AI Readiness Assessment",
-  "description": "A comprehensive analysis of your organization's readiness for AI implementation. Our AI-powered assessment will provide personalized insights and recommendations based on your industry, company size, and current technology stack.",
-  "questions": [
-    {
-      "id": "1",
-      "type": "email",
-      "question": "What is your business email address?",
-      "required": true
-    },
-    {
-      "id": "2",
-      "type": "text",
-      "question": "What is your name?",
-      "required": true
-    },
-    {
-      "id": "3",
-      "type": "text",
-      "question": "What is your company name?",
-      "required": true
-    },
-    {
-      "id": "4",
-      "type": "select",
-      "question": "What industry are you in?",
-      "required": true,
-      "options": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Manufacturing",
-        "Retail",
-        "Education",
-        "Other"
-      ]
-    },
-    {
-      "id": "5",
-      "type": "select",
-      "question": "How many employees does your company have?",
-      "required": true,
-      "options": [
-        "1-10",
-        "11-50",
-        "51-200",
-        "201-1000",
-        "1000+"
-      ]
-    },
-    {
-      "id": "6",
-      "type": "select",
-      "question": "What is your current AI adoption level?",
-      "required": true,
-      "options": [
-        "No AI implementation",
-        "Basic automation tools",
-        "Some AI features",
-        "Advanced AI systems",
-        "AI-first organization"
-      ]
-    },
-    {
-      "id": "7",
-      "type": "textarea",
-      "question": "What are your main goals for AI implementation?",
-      "required": false
-    },
-    {
-      "id": "8",
-      "type": "select",
-      "question": "What is your budget range for AI projects?",
-      "required": false,
-      "options": [
-        "Under $10K",
-        "$10K - $50K",
-        "$50K - $200K",
-        "$200K - $1M",
-        "$1M+"
-      ]
-    }
+  "contentTypes": [
+    "AI Readiness Assessment",
+    "Personalized Product Guide",
+    "Product Comparison", 
+    "Investment Profile",
+    "ROI Calculator",
+    "Case Study",
+    "White Paper",
+    "Assessment"
   ],
-  "formName": "AI Readiness Assessment",
-  "formDescription": "Get a personalized analysis of your organization's AI readiness and receive actionable recommendations for implementation."
+  "aiReadinessAssessment": {
+    "contentType": "AI Readiness Assessment",
+    "description": "A comprehensive analysis of your organization's readiness for AI implementation. Our AI-powered assessment will provide personalized insights and recommendations based on your industry, company size, and current technology stack.",
+    "questions": [
+      {
+        "id": "1",
+        "type": "email",
+        "question": "What is your business email address?",
+        "required": true
+      },
+      {
+        "id": "2",
+        "type": "text",
+        "question": "What is your name?",
+        "required": true
+      },
+      {
+        "id": "3",
+        "type": "text",
+        "question": "What is your company name?",
+        "required": true
+      },
+      {
+        "id": "4",
+        "type": "select",
+        "question": "What industry are you in?",
+        "required": true,
+        "options": [
+          "Technology",
+          "Healthcare",
+          "Finance",
+          "Manufacturing",
+          "Retail",
+          "Education",
+          "Other"
+        ]
+      },
+      {
+        "id": "5",
+        "type": "select",
+        "question": "How many employees does your company have?",
+        "required": true,
+        "options": [
+          "1-10",
+          "11-50",
+          "51-200",
+          "201-1000",
+          "1000+"
+        ]
+      },
+      {
+        "id": "6",
+        "type": "select",
+        "question": "What is your current AI adoption level?",
+        "required": true,
+        "options": [
+          "No AI implementation",
+          "Basic automation tools",
+          "Some AI features",
+          "Advanced AI systems",
+          "AI-first organization"
+        ]
+      },
+      {
+        "id": "7",
+        "type": "textarea",
+        "question": "What are your main goals for AI implementation?",
+        "required": false
+      },
+      {
+        "id": "8",
+        "type": "select",
+        "question": "What is your budget range for AI projects?",
+        "required": false,
+        "options": [
+          "Under $10K",
+          "$10K - $50K",
+          "$50K - $200K",
+          "$200K - $1M",
+          "$1M+"
+        ]
+      }
+    ],
+    "formName": "AI Readiness Assessment",
+    "formDescription": "Get a personalized analysis of your organization's AI readiness and receive actionable recommendations for implementation."
+  },
+  "personalizedProductGuide": {
+    "contentType": "Personalized Product Guide",
+    "description": "Get a customized product guide tailored to your specific needs, preferences, and use cases. Our AI analyzes your requirements to recommend the perfect solutions.",
+    "questions": [
+      {
+        "id": "1",
+        "type": "email",
+        "question": "What is your business email address?",
+        "required": true
+      },
+      {
+        "id": "2",
+        "type": "text",
+        "question": "What is your name?",
+        "required": true
+      },
+      {
+        "id": "3",
+        "type": "text",
+        "question": "What is your company name?",
+        "required": true
+      },
+      {
+        "id": "4",
+        "type": "select",
+        "question": "What type of products are you looking for?",
+        "required": true,
+        "options": [
+          "Software & SaaS",
+          "Hardware & Equipment",
+          "Marketing Tools",
+          "Analytics & Data",
+          "Security Solutions",
+          "Communication Tools",
+          "Other"
+        ]
+      },
+      {
+        "id": "5",
+        "type": "select",
+        "question": "What is your primary use case?",
+        "required": true,
+        "options": [
+          "Business Operations",
+          "Customer Management",
+          "Team Collaboration",
+          "Data Analysis",
+          "Marketing & Sales",
+          "Product Development",
+          "Other"
+        ]
+      },
+      {
+        "id": "6",
+        "type": "select",
+        "question": "What is your company size?",
+        "required": true,
+        "options": [
+          "Startup (1-10 employees)",
+          "Small Business (11-50 employees)",
+          "Medium Business (51-200 employees)",
+          "Large Business (200+ employees)",
+          "Enterprise (1000+ employees)"
+        ]
+      },
+      {
+        "id": "7",
+        "type": "select",
+        "question": "What is your budget range?",
+        "required": true,
+        "options": [
+          "Under $100/month",
+          "$100 - $500/month",
+          "$500 - $2000/month",
+          "$2000 - $10000/month",
+          "$10000+/month"
+        ]
+      },
+      {
+        "id": "8",
+        "type": "textarea",
+        "question": "What are your specific requirements or pain points?",
+        "required": false
+      },
+      {
+        "id": "9",
+        "type": "select",
+        "question": "What is your implementation timeline?",
+        "required": false,
+        "options": [
+          "Immediate (within 1 month)",
+          "Short-term (1-3 months)",
+          "Medium-term (3-6 months)",
+          "Long-term (6+ months)",
+          "Just exploring options"
+        ]
+      }
+    ],
+    "formName": "Personalized Product Guide",
+    "formDescription": "Get a customized product guide with AI-powered recommendations tailored to your business needs."
+  }
 }

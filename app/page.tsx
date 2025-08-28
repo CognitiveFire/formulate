@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Wand2, ArrowRight, Check, Sparkles, Eye, Globe, BarChart3, Target, TrendingUp, FormInput, Palette, Zap } from 'lucide-react'
+import { Wand2, ArrowRight, Check, Sparkles, Eye, Globe, BarChart3, Target, TrendingUp, FormInput, Palette, Zap, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import MobileNavigation from '@/components/MobileNavigation'
 
@@ -150,6 +150,34 @@ export default function HomePage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* New Product Guide Demo Section */}
+          <div className="mt-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-gradient-to-r from-n60-600 to-n60-700 rounded-2xl p-8 text-white border border-n60-500"
+            >
+              <div className="text-center mb-6">
+                <BookOpen className="w-16 h-16 mx-auto mb-4 text-n60-200" />
+                <h3 className="text-2xl font-bold mb-2">Try Our New Product Guide Demo</h3>
+                <p className="text-n60-100 max-w-2xl mx-auto">
+                  Experience a personalized product guide with AI-powered recommendations, interactive e-reader interface, and intelligent chatbot assistant.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/product-guide-demo" className="bg-white text-n60-600 hover:bg-n60-50 font-medium py-3 px-8 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2">
+                  <span>Try Product Guide Demo</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/demo" className="border border-white/30 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
+                  View All Demos
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
