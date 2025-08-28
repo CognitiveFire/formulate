@@ -125,6 +125,23 @@ export default function ProductGuideDemoPage() {
             </h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-charcoal-700 mb-2">
+                  Ditt Navn
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={(e) => updateFormData('name', e.target.value)}
+                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors"
+                  placeholder="Skriv ditt fullnavn"
+                  required
+                />
+              </div>
+
               {/* Company Name */}
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-charcoal-700 mb-2">
@@ -142,44 +159,56 @@ export default function ProductGuideDemoPage() {
                 />
               </div>
 
-              {/* Product Type */}
+              {/* Product Type - Multiple Choice */}
               <div>
-                <label htmlFor="productType" className="block text-sm font-medium text-charcoal-700 mb-2">
-                  Produkttype
+                <label className="block text-sm font-medium text-charcoal-700 mb-2">
+                  Produkttype (velg så mange som passer)
                 </label>
-                <select
-                  id="productType"
-                  name="productType"
-                  value={formData.productType}
-                  onChange={(e) => updateFormData('productType', e.target.value)}
-                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors"
-                  required
-                >
-                  <option value="">Velg produkttype</option>
+                <div className="space-y-2">
                   {productTypes.map((type) => (
-                    <option key={type} value={type}>{type}</option>
+                    <label key={type} className="flex items-center space-x-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.productType.includes(type)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            updateFormData('productType', formData.productType ? `${formData.productType}, ${type}` : type)
+                          } else {
+                            updateFormData('productType', formData.productType.replace(new RegExp(`(, )?${type}`), '').replace(/^, /, ''))
+                          }
+                        }}
+                        className="w-4 h-4 text-n60-600 border-charcoal-300 rounded focus:ring-n60-500 focus:ring-2"
+                      />
+                      <span className="text-charcoal-700">{type}</span>
+                    </label>
                   ))}
-                </select>
+                </div>
               </div>
 
-              {/* Use Case */}
+              {/* Use Case - Multiple Choice */}
               <div>
-                <label htmlFor="useCase" className="block text-sm font-medium text-charcoal-700 mb-2">
-                  Hovedbruksområde
+                <label className="block text-sm font-medium text-charcoal-700 mb-2">
+                  Hovedbruksområde (velg så mange som passer)
                 </label>
-                <select
-                  id="useCase"
-                  name="useCase"
-                  value={formData.useCase}
-                  onChange={(e) => updateFormData('useCase', e.target.value)}
-                  className="w-full px-4 py-3 border border-charcoal-300 rounded-lg focus:ring-2 focus:ring-n60-500 focus:border-n60-500 transition-colors"
-                  required
-                >
-                  <option value="">Velg bruksområde</option>
+                <div className="space-y-2">
                   {useCases.map((useCase) => (
-                    <option key={useCase} value={useCase}>{useCase}</option>
+                    <label key={useCase} className="flex items-center space-x-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.useCase.includes(useCase)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            updateFormData('useCase', formData.useCase ? `${formData.useCase}, ${useCase}` : useCase)
+                          } else {
+                            updateFormData('useCase', formData.useCase.replace(new RegExp(`(, )?${useCase}`), '').replace(/^, /, ''))
+                          }
+                        }}
+                        className="w-4 h-4 text-n60-600 border-charcoal-300 rounded focus:ring-n60-500 focus:ring-2"
+                      />
+                      <span className="text-charcoal-700">{useCase}</span>
+                    </label>
                   ))}
-                </select>
+                </div>
               </div>
 
               {/* Company Size */}
